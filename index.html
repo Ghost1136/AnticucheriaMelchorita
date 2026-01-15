@@ -32,7 +32,8 @@
               backgroundImage: {
                 'logo': "url('Images/logo.png')",
                 'fachada': "url('Images/fachada.jpg')",
-                'portada': "url('Images/Principal.png')"
+                'portada': "url('Images/Principal.png')",
+                'abuelos': "url('Images/abuelos.png')"
               }
             }
           }
@@ -49,8 +50,8 @@
                     <div>
                         <img src="Images/logo2.png" alt="logo" class="h-13 w-10 rounded-full object-cover">
                     </div>
-                    <span class="text-amarillo font-extrabold text-xl md:text-2xl tracking-wider uppercase drop-shadow-md">
-                        Melchorita
+                    <span class="text-amarillo font-extrabold text-lg sm:text-2xl tracking-wider uppercase drop-shadow-md leading-none">
+                        Anticuchería <br class="sm:hidden"> Melchorita
                     </span>
                 </div>
                 
@@ -84,14 +85,15 @@
     </nav>
 
     <header id="Inicio" class="relative h-[80vh] flex items-center justify-center bg-fixed bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1593759608142-43ad05504797?q=80&w=1470&auto=format&fit=crop');">
-        <div class="absolute inset-0 bg-portada bg-cover"> </div>
+        <div class="absolute inset-0 bg-portada bg-cover bg-center lg:bg-contain opacity-90 lg:opacity-100"> </div>
+        <div class="absolute inset-0 bg-black/40 lg:hidden"></div> 
         
         <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
-            <span class="text-amarillo font-bold tracking-widest uppercase mb-2 block animate-pulse">Desde los 2000</span>
-            <h1 class="text-4xl md:text-7xl font-extrabold text-white mb-6 drop-shadow-xl leading-tight">
+            <span class="text-amarillo font-bold tracking-widest uppercase mb-2 block animate-pulse">Un legado de sabor</span>
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white mb-6 drop-shadow-xl leading-tight">
                 El Verdadero Sabor <br> <span class="text-amarillo">Anticuchero</span>
             </h1>
-            <p class="text-lg md:text-xl text-gray-200 mb-10 font-light">
+            <p class="text-lg md:text-xl text-gray-200 mb-10 font-light max-w-2xl mx-auto">
                 Corazón tierno, aderezo secreto y fuego de leña. Una experiencia que tienes que vivir.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -108,7 +110,7 @@
     <section id="Nosotros" class="py-20 bg-white">
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             
-            <div>
+            <div class="order-2 md:order-1">
                 <h2 class="text-guinda text-lg font-bold uppercase tracking-widest mb-2">Nuestra Historia</h2>
                 <h3 class="text-3xl md:text-4xl font-extrabold text-negro mb-6 leading-tight">Pasión por la parrilla peruana</h3>
                 <p class="text-gray-600 text-lg mb-6 leading-relaxed">
@@ -123,15 +125,15 @@
                 </div>
             </div>
 
-            <div class="relative">
+            <div class="relative order-1 md:order-2">
                 <div class="absolute -inset-4 bg-amarillo rounded-xl opacity-20 transform rotate-3"></div>
-                <img src="https://images.unsplash.com/photo-1544025162-d76690b67f11?q=80" alt="Fachada" class="relative rounded-xl shadow-2xl transform hover:-rotate-1 transition duration-500 w-full object-cover">
+                <img src="Images/abuelos.png" alt="abuelos" class="relative rounded-full shadow-2xl transform hover:-rotate-1 transition duration-500 w-full object-cover">
             </div>
         </div>
     </section>
 
     <section id="Menu" class="py-20 bg-gray-100">
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
             
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-extrabold text-guinda mb-4">Nuestra Carta</h2>
@@ -145,9 +147,9 @@
             </div>
 
             <h3 class="text-2xl font-bold text-negro mb-6 border-l-8 border-guinda pl-4">🔥 Surtidos y Combinados</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                 
-                <div class="tarjeta-plato bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300 border-2 border-amarillo transform scale-105 md:scale-105 z-10 flex flex-col h-full">
+                <div class="tarjeta-plato bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300 border-2 border-amarillo transform hover:scale-105 z-10 flex flex-col h-full">
                     <div class="bg-amarillo text-center py-1 text-xs font-bold text-guinda uppercase tracking-widest">El Favorito</div>
                     <div class="h-48 bg-gray-300 bg-cover bg-center" style="background-image: url('Images/logo.png');"></div>
                     <div class="p-6 relative flex flex-col flex-grow">
@@ -156,8 +158,8 @@
                         <p class="text-gray-500 text-sm mb-4 flex-grow">La experiencia total: Corazón, rachi, choncholí, bofe, hígado y mollejitas.</p>
                         
                         <div class="mt-auto pt-4 border-t border-gray-100">
-                            <div class="flex items-center justify-between gap-2">
-                                <div class="flex items-center border-2 border-gray-200 rounded-lg">
+                            <div class="flex flex-row items-center justify-between gap-3">
+                                <div class="flex items-center border-2 border-gray-200 rounded-lg shrink-0">
                                     <button onclick="actualizarCantidad(this, -1)" class="px-3 py-1 text-gray-600 hover:bg-gray-100 font-bold rounded-l-md">-</button>
                                     <span class="cantidad-numero px-3 font-bold text-negro">1</span>
                                     <button onclick="actualizarCantidad(this, 1)" class="px-3 py-1 text-guinda hover:bg-red-50 font-bold rounded-r-md">+</button>
@@ -168,15 +170,15 @@
                     </div>
                 </div>
 
-                <div class="tarjeta-plato bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col h-full">
+                <div class="tarjeta-plato bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col h-full transform hover:scale-105 z-10">
                     <div class="h-48 bg-gray-300 bg-cover bg-center group-hover:scale-105 transition duration-500" style="background-image: url('https://menuperu.blob.core.windows.net/menuperu/recetas/c213x310/rachi-anticuchero-3081.jpg');"></div>
                     <div class="p-6 relative flex flex-col flex-grow">
                         <div class="absolute -top-5 right-5 bg-amarillo text-guinda font-bold px-3 py-1 rounded-full shadow-md">S/ 23.00</div>
                         <h4 class="text-xl font-bold text-guinda mb-2">Surtido #2</h4>
                         <p class="text-gray-500 text-sm mb-4 flex-grow">Combinación potente: Corazón, rachi, choncholí, bofe e hígado.</p>
                         <div class="mt-auto pt-4 border-t border-gray-100">
-                            <div class="flex items-center justify-between gap-2">
-                                <div class="flex items-center border-2 border-gray-200 rounded-lg">
+                             <div class="flex flex-row items-center justify-between gap-3">
+                                <div class="flex items-center border-2 border-gray-200 rounded-lg shrink-0">
                                     <button onclick="actualizarCantidad(this, -1)" class="px-3 py-1 text-gray-600 hover:bg-gray-100 font-bold rounded-l-md">-</button>
                                     <span class="cantidad-numero px-3 font-bold text-negro">1</span>
                                     <button onclick="actualizarCantidad(this, 1)" class="px-3 py-1 text-guinda hover:bg-red-50 font-bold rounded-r-md">+</button>
@@ -187,15 +189,15 @@
                     </div>
                 </div>
 
-                <div class="tarjeta-plato bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col h-full">
+                <div class="tarjeta-plato bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col h-full transform hover:scale-105 z-10">
                     <div class="h-48 bg-gray-300 bg-cover bg-center group-hover:scale-105 transition duration-500" style="background-image: url('https://img-global.cpcdn.com/recipes/5c9d9d0232537d7a/680x482cq70/combinado-anticuchero-foto-principal.jpg');"></div>
                     <div class="p-6 relative flex flex-col flex-grow">
                         <div class="absolute -top-5 right-5 bg-amarillo text-guinda font-bold px-3 py-1 rounded-full shadow-md">S/ 15.00</div>
                         <h4 class="text-xl font-bold text-guinda mb-2">Surtido #1</h4>
                         <p class="text-gray-500 text-sm mb-4 flex-grow">El clásico trío parrillero: Corazón, rachi y choncholí.</p>
                         <div class="mt-auto pt-4 border-t border-gray-100">
-                            <div class="flex items-center justify-between gap-2">
-                                <div class="flex items-center border-2 border-gray-200 rounded-lg">
+                             <div class="flex flex-row items-center justify-between gap-3">
+                                <div class="flex items-center border-2 border-gray-200 rounded-lg shrink-0">
                                     <button onclick="actualizarCantidad(this, -1)" class="px-3 py-1 text-gray-600 hover:bg-gray-100 font-bold rounded-l-md">-</button>
                                     <span class="cantidad-numero px-3 font-bold text-negro">1</span>
                                     <button onclick="actualizarCantidad(this, 1)" class="px-3 py-1 text-guinda hover:bg-red-50 font-bold rounded-r-md">+</button>
@@ -208,8 +210,8 @@
             </div>
 
             <h3 class="text-2xl font-bold text-negro mb-6 border-l-8 border-guinda pl-4">🍗 Especialidades</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-                <div class="tarjeta-plato bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col h-full">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <div class="tarjeta-plato bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col h-full transform hover:scale-105 z-10">
                     <div class="h-40 bg-gray-200 bg-cover bg-center" style="background-image: url('Images/logo2.png');"></div>
                     <div class="p-5 flex flex-col flex-grow">
                         <div class="flex justify-between items-center mb-2">
@@ -218,8 +220,8 @@
                         </div>
                         <p class="text-xs text-gray-500 mb-4 flex-grow">Corte especial de corazón.</p>
                         <div class="mt-auto pt-3 border-t border-gray-100">
-                             <div class="flex items-center justify-between gap-2">
-                                <div class="flex items-center border rounded-lg">
+                             <div class="flex flex-row items-center justify-between gap-2">
+                                <div class="flex items-center border rounded-lg shrink-0">
                                     <button onclick="actualizarCantidad(this, -1)" class="px-2 py-1 text-gray-600 hover:bg-gray-100 font-bold">-</button>
                                     <span class="cantidad-numero px-2 font-bold text-sm text-negro">1</span>
                                     <button onclick="actualizarCantidad(this, 1)" class="px-2 py-1 text-guinda hover:bg-red-50 font-bold">+</button>
@@ -230,28 +232,28 @@
                     </div>
                 </div>
 
-                <div class="tarjeta-plato bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col h-full">
+                <div class="tarjeta-plato bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col h-full transform hover:scale-105 z-10">
                     <div class="h-40 bg-gray-200 bg-cover bg-center" style="background-image: url('https://comidasperuanas.net/wp-content/uploads/2020/10/Anticuchos-de-corazon.webp');"></div>
                     <div class="p-5 flex flex-col flex-grow">
                         <div class="flex justify-between items-center mb-2">
-                            <h4 class="font-bold text-guinda">Anticucho Clásico</h4>
+                            <h4 class="font-bold text-guinda">Anticuchos Clásicos</h4>
                             <span class="bg-amarillo text-guinda text-xs px-2 py-1 rounded font-bold">S/ 15.00</span>
                         </div>
                         <p class="text-xs text-gray-500 mb-4 flex-grow">3 palitos clásicos.</p>
                         <div class="mt-auto pt-3 border-t border-gray-100">
-                             <div class="flex items-center justify-between gap-2">
-                                <div class="flex items-center border rounded-lg">
+                             <div class="flex flex-row items-center justify-between gap-2">
+                                <div class="flex items-center border rounded-lg shrink-0">
                                     <button onclick="actualizarCantidad(this, -1)" class="px-2 py-1 text-gray-600 hover:bg-gray-100 font-bold">-</button>
                                     <span class="cantidad-numero px-2 font-bold text-sm text-negro">1</span>
                                     <button onclick="actualizarCantidad(this, 1)" class="px-2 py-1 text-guinda hover:bg-red-50 font-bold">+</button>
                                 </div>
-                                <button onclick="agregarAlCarrito(this)" class="flex-1 border border-guinda text-guinda text-sm font-bold py-2 rounded-lg hover:bg-guinda hover:text-white transition">Agregar</button>
+                                <button onclick="agregarAlCarrito(this)" class="flex-1 border-2 border-guinda text-guinda font-bold py-2 px-4 rounded-lg hover:bg-guinda hover:text-white transition">Agregar</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                 <div class="tarjeta-plato bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col h-full">
+                <div class="tarjeta-plato bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col h-full transform hover:scale-105 z-10">
                     <div class="h-40 bg-gray-200 bg-cover bg-center" style="background-image: url('https://i.pinimg.com/736x/8e/bd/84/8ebd84065662700858547228a649646b.jpg');"></div>
                     <div class="p-5 flex flex-col flex-grow">
                         <div class="flex justify-between items-center mb-2">
@@ -260,19 +262,19 @@
                         </div>
                         <p class="text-xs text-gray-500 mb-4 flex-grow">Con arroz chaufa y papas fritas.</p>
                         <div class="mt-auto pt-3 border-t border-gray-100">
-                             <div class="flex items-center justify-between gap-2">
-                                <div class="flex items-center border rounded-lg">
+                             <div class="flex flex-row items-center justify-between gap-2">
+                                <div class="flex items-center border rounded-lg shrink-0">
                                     <button onclick="actualizarCantidad(this, -1)" class="px-2 py-1 text-gray-600 hover:bg-gray-100 font-bold">-</button>
                                     <span class="cantidad-numero px-2 font-bold text-sm text-negro">1</span>
                                     <button onclick="actualizarCantidad(this, 1)" class="px-2 py-1 text-guinda hover:bg-red-50 font-bold">+</button>
                                 </div>
-                                <button onclick="agregarAlCarrito(this)" class="flex-1 border border-guinda text-guinda text-sm font-bold py-2 rounded-lg hover:bg-guinda hover:text-white transition">Agregar</button>
+                                <button onclick="agregarAlCarrito(this)" class="flex-1 border-2 border-guinda text-guinda font-bold py-2 px-4 rounded-lg hover:bg-guinda hover:text-white transition">Agregar</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="tarjeta-plato bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col h-full">
+                <div class="tarjeta-plato bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col h-full transform hover:scale-105 z-10">
                     <div class="h-40 bg-gray-200 bg-cover bg-center" style="background-image: url('https://www.comida-peruana.com/base/stock/Recipe/158-image/158-image_web.jpg');"></div>
                     <div class="p-5 flex flex-col flex-grow">
                         <div class="flex justify-between items-center mb-2">
@@ -281,8 +283,8 @@
                         </div>
                         <p class="text-xs text-gray-500 mb-4 flex-grow">Contundente.</p>
                         <div class="mt-auto pt-3 border-t border-gray-100">
-                             <div class="flex items-center justify-between gap-2">
-                                <div class="flex items-center border rounded-lg">
+                             <div class="flex flex-row items-center justify-between gap-2">
+                                <div class="flex items-center border rounded-lg shrink-0">
                                     <button onclick="actualizarCantidad(this, -1)" class="px-2 py-1 text-gray-600 hover:bg-gray-100 font-bold">-</button>
                                     <span class="cantidad-numero px-2 font-bold text-sm text-negro">1</span>
                                     <button onclick="actualizarCantidad(this, 1)" class="px-2 py-1 text-guinda hover:bg-red-50 font-bold">+</button>
@@ -394,38 +396,55 @@
             </div>
 
             <h3 class="text-2xl font-bold text-negro mb-6 border-l-8 border-guinda pl-4">🥔 Guarniciones</h3>
+            
             <div class="flex flex-wrap gap-4">
                 
-                <div class="tarjeta-plato bg-gray-200 px-6 py-3 rounded-full flex items-center gap-3 shadow-sm hover:shadow-md transition">
-                    <span class="text-2xl">🥔</span>
-                    <div>
-                        <h5 class="font-bold text-negro">Papas</h5>
-                        <span class="text-guinda font-bold block">S/ 5.00</span>
+                <div class="tarjeta-plato bg-gray-200 rounded-full p-2 pr-4 flex items-center justify-between w-full sm:w-auto gap-6 sm:gap-8 shadow-sm hover:shadow-md transition border border-gray-100">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-2xl shadow-sm">🥔</div>
+                        <div>
+                            <h4 class="font-bold text-negro text-sm leading-tight">Papas</h4>
+                            <span class="text-guinda font-bold text-xs block">S/ 5.00</span>
+                        </div>
                     </div>
-                     <div class="flex items-center border border-gray-400 rounded-lg bg-white ml-2">
-                        <button onclick="actualizarCantidad(this, -1)" class="px-2 text-gray-600 font-bold">-</button>
-                        <span class="cantidad-numero px-1 font-bold text-sm text-negro">1</span>
-                        <button onclick="actualizarCantidad(this, 1)" class="px-2 text-guinda font-bold">+</button>
+                    
+                    <div class="flex items-center gap-3">
+                         <div class="flex items-center bg-white border border-gray-300 rounded-full px-1 h-8 shadow-inner">
+                            <button onclick="actualizarCantidad(this, -1)" class="w-6 text-gray-500 hover:text-guinda font-bold text-lg leading-none pb-1 flex justify-center">-</button>
+                            <span class="cantidad-numero font-bold text-sm text-negro w-4 text-center">1</span>
+                            <button onclick="actualizarCantidad(this, 1)" class="w-6 text-guinda hover:text-red-800 font-bold text-lg leading-none pb-1 flex justify-center">+</button>
+                        </div>
+                        
+                        <button onclick="agregarAlCarrito(this)" class="group w-8 h-8 rounded-full border-2 border-guinda text-guinda hover:bg-guinda hover:text-white flex items-center justify-center transition shadow-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-hover:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                            </svg>
+                        </button>
                     </div>
-                    <button onclick="agregarAlCarrito(this)" class="ml-2 text-guinda hover:text-red-800">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    </button>
                 </div>
 
-                <div class="tarjeta-plato bg-gray-200 px-6 py-3 rounded-full flex items-center gap-3 shadow-sm hover:shadow-md transition">
-                    <span class="text-2xl">🌽</span>
-                    <div>
-                        <h5 class="font-bold text-negro">Choclo</h5>
-                        <span class="text-guinda font-bold block">S/ 5.00</span>
+                <div class="tarjeta-plato bg-gray-200 rounded-full p-2 pr-4 flex items-center justify-between w-full sm:w-auto gap-6 sm:gap-8 shadow-sm hover:shadow-md transition border border-gray-100">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-2xl shadow-sm">🌽</div>
+                        <div>
+                            <h4 class="font-bold text-negro text-sm leading-tight">Choclo</h4>
+                            <span class="text-guinda font-bold text-xs block">S/ 5.00</span>
+                        </div>
                     </div>
-                     <div class="flex items-center border border-gray-400 rounded-lg bg-white ml-2">
-                        <button onclick="actualizarCantidad(this, -1)" class="px-2 text-gray-600 font-bold">-</button>
-                        <span class="cantidad-numero px-1 font-bold text-sm text-negro">1</span>
-                        <button onclick="actualizarCantidad(this, 1)" class="px-2 text-guinda font-bold">+</button>
+                    
+                    <div class="flex items-center gap-3">
+                         <div class="flex items-center bg-white border border-gray-300 rounded-full px-1 h-8 shadow-inner">
+                            <button onclick="actualizarCantidad(this, -1)" class="w-6 text-gray-500 hover:text-guinda font-bold text-lg leading-none pb-1 flex justify-center">-</button>
+                            <span class="cantidad-numero font-bold text-sm text-negro w-4 text-center">1</span>
+                            <button onclick="actualizarCantidad(this, 1)" class="w-6 text-guinda hover:text-red-800 font-bold text-lg leading-none pb-1 flex justify-center">+</button>
+                        </div>
+                        
+                        <button onclick="agregarAlCarrito(this)" class="group w-8 h-8 rounded-full border-2 border-guinda text-guinda hover:bg-guinda hover:text-white flex items-center justify-center transition shadow-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-hover:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                            </svg>
+                        </button>
                     </div>
-                     <button onclick="agregarAlCarrito(this)" class="ml-2 text-guinda hover:text-red-800">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    </button>
                 </div>
 
             </div>
@@ -443,7 +462,7 @@
                     </span>
                 </div>
                 <p class="text-gray-400 text-sm leading-relaxed">
-                    Llevando la tradición anticuchera a tu mesa desde hace más de una década. Calidad, sabor y buen servicio.
+                    Llevando la tradición anticuchera a tu mesa desde hace más de dos décadas. Calidad, sabor y buen servicio.
                 </p>
             </div>
             <div>
@@ -463,27 +482,18 @@
                         <i class="fa-solid fa-location-dot text-guinda text-lg"></i>
                         <span>Plaza de armas 115, Grocio Prado</span>
                     </li>
-                    
-                    <li class="flex items-center justify-center md:justify-start gap-2">
-                        <i class="fa-solid fa-phone text-guinda text-lg"></i>
-                        <span>+51 956 469 567</span>
-                    </li>
 
                     <li class="mt-6">
                         <div class="flex gap-4 justify-center md:justify-start">
-                            
                             <a href="https://wa.me/51956469567" target="_blank" class="group relative w-10 h-10 flex items-center justify-center rounded-full border border-gray-600 transition-all duration-300 hover:bg-[#25D366] hover:border-[#25D366] hover:scale-110">
                                 <i class="fa-brands fa-whatsapp text-xl text-gray-400 group-hover:text-white transition-colors"></i>
                             </a>
-
                             <a href="tel:+51956469567" class="group relative w-10 h-10 flex items-center justify-center rounded-full border border-gray-600 transition-all duration-300 hover:bg-blue-600 hover:border-blue-600 hover:scale-110">
                                 <i class="fa-solid fa-phone text-lg text-gray-400 group-hover:text-white transition-colors"></i>
                             </a>
-
-                            <a href="#" target="_blank" class="group relative w-10 h-10 flex items-center justify-center rounded-full border border-gray-600 transition-all duration-300 hover:bg-[#E1306C] hover:border-[#E1306C] hover:scale-110">
+                            <a href="https://www.instagram.com/anticucheria_melchorita?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="group relative w-10 h-10 flex items-center justify-center rounded-full border border-gray-600 transition-all duration-300 hover:bg-[#E1306C] hover:border-[#E1306C] hover:scale-110">
                                 <i class="fa-brands fa-instagram text-xl text-gray-400 group-hover:text-white transition-colors"></i>
                             </a>
-
                         </div>
                     </li>
                 </ul>
