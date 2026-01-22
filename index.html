@@ -42,7 +42,7 @@
 </head>
 <body class="font-sans text-negro bg-gray-50 flex flex-col min-h-screen">
 
-    <nav class="bg-guinda sticky top-0 z-40 shadow-xl border-b-4 border-amarillo">
+<nav class="bg-guinda sticky top-0 z-40 shadow-xl border-b-4 border-amarillo">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 
@@ -55,7 +55,7 @@
                     </span>
                 </div>
                 
-                <div class="hidden md:block">
+                <div class="hidden min-[871px]:block">
                     <div class="ml-10 flex items-baseline space-x-6">
                         <a href="#Inicio" class="text-white hover:text-amarillo px-3 py-2 rounded-md text-sm font-semibold transition duration-300">Inicio</a>
                         <a href="#Nosotros" class="text-white hover:text-amarillo px-3 py-2 rounded-md text-sm font-semibold transition duration-300">Nosotros</a>
@@ -65,7 +65,7 @@
                     </div>
                 </div>
 
-                <div class="-mr-2 flex md:hidden">
+                <div class="-mr-2 flex min-[871px]:hidden">
                     <button onclick="toggleMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-amarillo hover:text-white hover:bg-red-900 focus:outline-none transition">
                         <svg class="h-8 w-8" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -75,7 +75,7 @@
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-red-900 border-t border-red-800 absolute w-full left-0 z-40">
+        <div id="mobile-menu" class="hidden min-[871px]:hidden bg-red-900 border-t border-red-800 absolute w-full left-0 z-40">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#Inicio" onclick="toggleMenu()" class="text-white block px-3 py-3 rounded-md text-base font-bold hover:bg-guinda border-l-4 border-transparent hover:border-amarillo transition">Inicio</a>
                 <a href="#Nosotros" onclick="toggleMenu()" class="text-white block px-3 py-3 rounded-md text-base font-bold hover:bg-guinda border-l-4 border-transparent hover:border-amarillo transition">Nosotros</a>
@@ -190,7 +190,7 @@
                 </div>
 
                 <div class="tarjeta-plato bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col h-full transform hover:scale-105 z-10">
-                    <div class="h-48 bg-gray-300 bg-cover bg-center group-hover:scale-105 transition duration-500" style="background-image: url('https://img-global.cpcdn.com/recipes/5c9d9d0232537d7a/680x482cq70/combinado-anticuchero-foto-principal.jpg');"></div>
+                    <div class="h-48 bg-gray-300 bg-cover bg-center group-hover:scale-105 transition duration-500" style="background-image: url('Images/surtido.png');"></div>
                     <div class="p-6 relative flex flex-col flex-grow">
                         <div class="absolute -top-5 right-5 bg-amarillo text-guinda font-bold px-3 py-1 rounded-full shadow-md">S/ 15.00</div>
                         <h4 class="text-xl font-bold text-guinda mb-2">Surtido #1</h4>
@@ -233,7 +233,7 @@
                 </div>
 
                 <div class="tarjeta-plato bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col h-full transform hover:scale-105 z-10">
-                    <div class="h-40 bg-gray-200 bg-cover bg-center" style="background-image: url('https://comidasperuanas.net/wp-content/uploads/2020/10/Anticuchos-de-corazon.webp');"></div>
+                    <div class="h-40 bg-gray-200 bg-cover bg-center" style="background-image: url('Images/anticucho.png');"></div>
                     <div class="p-5 flex flex-col flex-grow">
                         <div class="flex justify-between items-center mb-2">
                             <h4 class="font-bold text-guinda">Anticuchos Clásicos</h4>
@@ -254,7 +254,7 @@
                 </div>
 
                 <div class="tarjeta-plato bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col h-full transform hover:scale-105 z-10">
-                    <div class="h-40 bg-gray-200 bg-cover bg-center" style="background-image: url('https://i.pinimg.com/736x/8e/bd/84/8ebd84065662700858547228a649646b.jpg');"></div>
+                    <div class="h-40 bg-gray-200 bg-cover bg-center" style="background-image: url('Images/pollo.png');"></div>
                     <div class="p-5 flex flex-col flex-grow">
                         <div class="flex justify-between items-center mb-2">
                             <h4 class="font-bold text-guinda">Pollo Broaster</h4>
@@ -275,7 +275,7 @@
                 </div>
 
                 <div class="tarjeta-plato bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col h-full transform hover:scale-105 z-10">
-                    <div class="h-40 bg-gray-200 bg-cover bg-center" style="background-image: url('https://www.comida-peruana.com/base/stock/Recipe/158-image/158-image_web.jpg');"></div>
+                    <div class="h-40 bg-gray-200 bg-cover bg-center" style="background-image: url('Images/caldo.png');"></div>
                     <div class="p-5 flex flex-col flex-grow">
                         <div class="flex justify-between items-center mb-2">
                             <h4 class="font-bold text-guinda">Caldo de Gallina</h4>
