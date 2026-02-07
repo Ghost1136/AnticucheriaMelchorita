@@ -7,13 +7,16 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="icon" href="publics\favicon.ico" type="image/x-icon">
+    <link rel="icon" href="Images/logo2.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     
     <script src="toggleMenu.js" defer></script>
     <script src="carrito.js" defer></script>
+    <script src="animacion.js" defer></script>
+    
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
@@ -42,13 +45,13 @@
 </head>
 <body class="font-sans text-negro bg-gray-50 flex flex-col min-h-screen">
 
-<nav class="bg-guinda sticky top-0 z-40 shadow-xl border-b-4 border-amarillo">
+    <nav class="bg-guinda sticky top-0 z-40 shadow-xl border-b-4 border-amarillo transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 
-                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer transition transform hover:scale-105">
-                    <div>
-                        <img src="Images/logo2.png" alt="logo" class="h-13 w-10 rounded-full object-cover">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer transition transform hover:scale-105 group">
+                    <div class="relative py-1">
+                        <img src="Images/logo2.png" alt="logo" class="h-14 w-auto object-contain drop-shadow-md">
                     </div>
                     <span class="text-amarillo font-extrabold text-lg sm:text-2xl tracking-wider uppercase drop-shadow-md leading-none">
                         Anticuchería <br class="sm:hidden"> Melchorita
@@ -56,17 +59,17 @@
                 </div>
                 
                 <div class="hidden min-[871px]:block">
-                    <div class="ml-10 flex items-baseline space-x-6">
+                    <div class="ml-10 flex items-baseline space-x-8">
                         <a href="#Inicio" class="text-white hover:text-amarillo px-3 py-2 rounded-md text-sm font-semibold transition duration-300">Inicio</a>
                         <a href="#Nosotros" class="text-white hover:text-amarillo px-3 py-2 rounded-md text-sm font-semibold transition duration-300">Nosotros</a>
-                        <a href="#Menu" class="bg-amarillo text-guinda hover:bg-white hover:text-guinda px-5 py-2 rounded-full font-bold transition duration-300 shadow-lg transform hover:-translate-y-1">
-                            Ver La Carta
+                        <a href="#Menu" class="bg-amarillo text-guinda hover:bg-white hover:text-guinda px-6 py-2.5 rounded-full font-bold transition duration-300 shadow-lg transform hover:-translate-y-1 flex items-center gap-2">
+                            <i class="fa-solid fa-utensils text-xs"></i> Ver La Carta
                         </a>
                     </div>
                 </div>
 
                 <div class="-mr-2 flex min-[871px]:hidden">
-                    <button onclick="toggleMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-amarillo hover:text-white hover:bg-red-900 focus:outline-none transition">
+                    <button onclick="toggleMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-amarillo hover:text-white hover:bg-white/10 focus:outline-none transition">
                         <svg class="h-8 w-8" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
@@ -75,333 +78,448 @@
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden min-[871px]:hidden bg-red-900 border-t border-red-800 absolute w-full left-0 z-40">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#Inicio" onclick="toggleMenu()" class="text-white block px-3 py-3 rounded-md text-base font-bold hover:bg-guinda border-l-4 border-transparent hover:border-amarillo transition">Inicio</a>
-                <a href="#Nosotros" onclick="toggleMenu()" class="text-white block px-3 py-3 rounded-md text-base font-bold hover:bg-guinda border-l-4 border-transparent hover:border-amarillo transition">Nosotros</a>
-                <a href="#Menu" onclick="toggleMenu()" class="text-amarillo block px-3 py-3 rounded-md text-base font-bold hover:bg-guinda border-l-4 border-transparent hover:border-amarillo transition">La Carta</a>
+        <div id="mobile-menu" class="hidden min-[871px]:hidden bg-guinda border-t border-red-800 absolute w-full left-0 z-40 shadow-xl">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <a href="#Inicio" onclick="toggleMenu()" class="text-white block px-3 py-3 rounded-md text-base font-bold hover:bg-black/20 border-l-4 border-transparent hover:border-amarillo transition">Inicio</a>
+                <a href="#Nosotros" onclick="toggleMenu()" class="text-white block px-3 py-3 rounded-md text-base font-bold hover:bg-black/20 border-l-4 border-transparent hover:border-amarillo transition">Nosotros</a>
+                <a href="#Menu" onclick="toggleMenu()" class="text-amarillo block px-3 py-3 rounded-md text-base font-bold hover:bg-black/20 border-l-4 border-transparent hover:border-amarillo transition">La Carta</a>
             </div>
         </div>
     </nav>
 
-    <header id="Inicio" class="relative h-[80vh] flex items-center justify-center bg-fixed bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1593759608142-43ad05504797?q=80&w=1470&auto=format&fit=crop');">
-        <div class="absolute inset-0 bg-portada bg-cover bg-center lg:bg-contain opacity-90 lg:opacity-100"> </div>
-        <div class="absolute inset-0 bg-black/40 lg:hidden"></div> 
+    <header id="Inicio" class="relative h-[85vh] flex items-center justify-center bg-portada bg-cover bg-center bg-fixed">
+        <div class="absolute inset-0 bg-gradient-to-t from-guinda/90 via-black/40 to-black/30"></div>
         
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
-            <span class="text-amarillo font-bold tracking-widest uppercase mb-2 block animate-pulse">Un legado de sabor</span>
-            <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white mb-6 drop-shadow-xl leading-tight">
-                El Verdadero Sabor <br> <span class="text-amarillo">Anticuchero</span>
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-10">
+            <span class="reveal-up inline-block bg-amarillo text-guinda px-4 py-1 rounded-full text-sm font-bold tracking-widest uppercase mb-4 shadow-lg animate-pulse">
+                Un legado de sabor
+            </span>
+            <h1 class="reveal-up delay-100 text-4xl sm:text-6xl md:text-7xl font-extrabold text-white mb-6 drop-shadow-2xl leading-tight tracking-tight">
+                El Verdadero <br> 
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-amarillo to-orange-300">Sabor Anticuchero</span>
             </h1>
-            <p class="text-lg md:text-xl text-gray-200 mb-10 font-light max-w-2xl mx-auto">
+            <p class="reveal-up delay-200 text-lg md:text-2xl text-gray-200 mb-10 font-light max-w-2xl mx-auto leading-relaxed">
                 Corazón tierno, aderezo secreto y fuego de leña. Una experiencia que tienes que vivir.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#Menu" class="bg-amarillo text-guinda font-bold py-4 px-10 rounded-full text-lg hover:bg-white hover:scale-105 transition transform shadow-xl border-2 border-amarillo">
-                    ¡Quiero pedir!
+            <div class="reveal-up delay-300 flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#Menu" class="bg-amarillo text-guinda font-bold py-4 px-10 rounded-full text-lg hover:bg-white hover:scale-105 transition transform shadow-[0_0_20px_rgba(255,204,0,0.4)] border-2 border-amarillo flex items-center gap-2">
+                    ¡Quiero pedir! <i class="fa-solid fa-arrow-right"></i>
                 </a>
-                <a href="#Nosotros" class="bg-transparent border-2 border-white text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-white hover:text-guinda transition transform">
+                <a href="#Nosotros" class="bg-transparent border-2 border-white text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-white hover:text-guinda transition transform backdrop-blur-sm">
                     Conócenos
                 </a>
             </div>
         </div>
     </header>
 
-    <section id="Nosotros" class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <section id="Nosotros" class="py-24 bg-white overflow-hidden relative">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-10">
             
-            <div class="order-2 md:order-1">
-                <h2 class="text-guinda text-lg font-bold uppercase tracking-widest mb-2">Nuestra Historia</h2>
-                <h3 class="text-3xl md:text-4xl font-extrabold text-negro mb-6 leading-tight">Pasión por la parrilla peruana</h3>
-                <p class="text-gray-600 text-lg mb-6 leading-relaxed">
-                    En <span class="font-bold text-guinda">Anticuchería Melchorita</span>, cada plato cuenta una historia. 
-                    Comenzamos con una pequeña parrilla y hoy somos el punto de encuentro favorito de los amantes del buen comer.
+            <div class="order-2 md:order-1 reveal-left">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="h-1 w-12 bg-amarillo rounded-full"></div>
+                    <h2 class="text-guinda text-sm font-extrabold uppercase tracking-[0.2em]">Nuestra Historia</h2>
+                </div>
+                <h3 class="text-4xl md:text-5xl font-extrabold text-negro mb-6 leading-tight">
+                    Pasión y legado en la <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-guinda to-red-600">parrilla peruana</span>
+                </h3>
+                <p class="text-gray-600 text-lg mb-8 leading-relaxed font-medium">
+                    En <span class="font-bold text-guinda">Anticuchería Melchorita</span>, cada plato es un homenaje a la tradición. 
+                    Lo que comenzó como una pequeña parrilla familiar, hoy es el punto de encuentro para quienes buscan el verdadero sabor de antaño, preparado con amor y el secreto de la abuela.
                 </p>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-amarillo">
-                        <p class="font-bold text-2xl text-guinda">+25 Años</p>
-                        <p class="text-sm text-gray-500">De Tradición</p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-amarillo/20 p-3 rounded-xl text-guinda">
+                            <i class="fa-solid fa-fire-flame-curved text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-negro mb-1">Fuego de Leña</h4>
+                            <p class="text-sm text-gray-500 leading-snug">El auténtico sabor ahumado que nos diferencia.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="bg-guinda/10 p-3 rounded-xl text-guinda">
+                            <i class="fa-solid fa-mortar-pestle text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-negro mb-1">Aderezo Secreto</h4>
+                            <p class="text-sm text-gray-500 leading-snug">Una receta familiar guardada por generaciones.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-8 border-t-2 border-gray-100 pt-8">
+                    <div class="pr-8 border-r-2 border-gray-100">
+                        <p class="font-extrabold text-5xl text-amarillo drop-shadow-sm leading-none mb-2">+25</p>
+                        <p class="text-xs font-extrabold text-gray-400 uppercase tracking-wider">Años de Tradición</p>
+                    </div>
+                    <div>
+                        <p class="font-extrabold text-5xl text-guinda leading-none mb-2">100%</p>
+                        <p class="text-xs font-extrabold text-gray-400 uppercase tracking-wider">Corazón y Sazón</p>
                     </div>
                 </div>
             </div>
 
-            <div class="relative order-1 md:order-2">
-                <div class="absolute -inset-4 bg-amarillo rounded-xl opacity-20 transform rotate-3"></div>
-                <img src="Images/abuelos.png" alt="abuelos" class="relative rounded-full shadow-2xl transform hover:-rotate-1 transition duration-500 w-full object-cover">
+            <div class="relative order-1 md:order-2 group reveal-right">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-amarillo/10 rounded-full filter blur-3xl opacity-70 -z-10"></div>
+                <div class="absolute -inset-4 bg-guinda/5 rounded-[3rem] transform -rotate-3 transition duration-700 group-hover:rotate-0 z-0 border-2 border-guinda/10"></div>
+                
+                <img src="Images/abuelos.png" loading="lazy" alt="Fundadores de Melchorita" class="relative z-10 rounded-full shadow-2xl transform transition duration-500 group-hover:scale-[1.02] w-full object-cover border-4 border-white">
             </div>
         </div>
     </section>
 
-    <section id="Menu" class="py-20 bg-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-guinda mb-4">Nuestra Carta</h2>
-                <div class="h-1 w-24 bg-amarillo mx-auto rounded-full"></div>
-                <p class="mt-4 text-gray-600 text-lg">
+    <section id="Menu" class="py-24 bg-gray-50 relative">
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="text-center mb-16 max-w-3xl mx-auto reveal-up">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-guinda mb-4">Nuestra Carta</h2>
+                <div class="h-1.5 w-24 bg-amarillo mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600 text-xl">
                     El auténtico sabor de <span class="font-bold text-guinda">Beatita Melchorita</span>.
                 </p>
-                <div class="mt-4 inline-block bg-white px-4 py-2 rounded-lg shadow border-l-4 border-amarillo text-sm text-gray-600">
-                    🌽 <strong>Nota:</strong> Por <span class="text-guinda font-bold">S/ 2.00</span> extra agrega choclo.
+                <div class="mt-6 inline-flex items-center bg-white px-6 py-3 rounded-full shadow-md border border-gray-100 text-sm text-gray-600 gap-2">
+                    <span class="text-xl">🌽</span> 
+                    <span>Nota: Por <span class="text-guinda font-bold">S/ 2.00</span> extra agrega choclo a tu pedido.</span>
                 </div>
             </div>
 
-            <h3 class="text-2xl font-bold text-negro mb-6 border-l-8 border-guinda pl-4">🔥 Surtidos y Combinados</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <div class="flex items-center gap-4 mb-8 reveal-up">
+                <div class="bg-guinda text-white p-2 rounded-lg"><i class="fa-solid fa-fire"></i></div>
+                <h3 class="text-2xl font-bold text-negro">Surtidos y Combinados</h3>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
                 
-                <div class="tarjeta-plato bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300 border-2 border-amarillo transform hover:scale-105 z-10 flex flex-col h-full">
-                    <div class="bg-amarillo text-center py-1 text-xs font-bold text-guinda uppercase tracking-widest">El Favorito</div>
-                    <div class="h-48 bg-gray-300 bg-cover bg-center" style="background-image: url('Images/logo.png');"></div>
-                    <div class="p-6 relative flex flex-col flex-grow">
-                        <div class="absolute -top-5 right-5 bg-guinda text-white font-bold px-3 py-1 rounded-full shadow-md">S/ 25.00</div>
-                        <h4 class="text-xl font-bold text-guinda mb-2">Surtido #3</h4>
-                        <p class="text-gray-500 text-sm mb-4 flex-grow">La experiencia total: Corazón, rachi, choncholí, bofe, hígado y mollejitas.</p>
+                <div class="reveal-up tarjeta-plato bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col h-full group transform hover:-translate-y-2">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute top-4 left-4 z-20 bg-amarillo text-guinda text-xs font-bold px-3 py-1 rounded-full shadow uppercase tracking-wider">Más Vendido</div>
+                        <div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('Images/logo.png');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 right-4 text-white text-right">
+                            <span class="text-xs opacity-80 block">Precio</span>
+                            <span class="text-2xl font-bold">S/ 25.00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h4 class="text-xl font-bold text-guinda mb-2 group-hover:text-amarillo transition-colors">Surtido #3</h4>
+                        <p class="text-gray-500 text-sm mb-6 flex-grow leading-relaxed">La experiencia total: Corazón, rachi, choncholí, bofe, hígado y mollejitas.</p>
                         
-                        <div class="mt-auto pt-4 border-t border-gray-100">
-                            <div class="flex flex-row items-center justify-between gap-3">
-                                <div class="flex items-center border-2 border-gray-200 rounded-lg shrink-0">
-                                    <button onclick="actualizarCantidad(this, -1)" class="px-3 py-1 text-gray-600 hover:bg-gray-100 font-bold rounded-l-md">-</button>
-                                    <span class="cantidad-numero px-3 font-bold text-negro">1</span>
-                                    <button onclick="actualizarCantidad(this, 1)" class="px-3 py-1 text-guinda hover:bg-red-50 font-bold rounded-r-md">+</button>
-                                </div>
-                                <button onclick="agregarAlCarrito(this)" class="flex-1 border-2 border-guinda text-guinda font-bold py-2 px-4 rounded-lg hover:bg-guinda hover:text-white transition">Agregar</button>
+                        <div class="pt-4 border-t border-gray-100 flex items-center justify-between gap-4">
+                            <div class="flex items-center bg-gray-100 rounded-full p-1">
+                                <button onclick="actualizarCantidad(this, -1)" class="w-8 h-8 flex items-center justify-center bg-white rounded-full text-gray-600 font-bold hover:text-guinda shadow-sm transition">-</button>
+                                <span class="cantidad-numero w-8 text-center font-bold text-negro text-sm">1</span>
+                                <button onclick="actualizarCantidad(this, 1)" class="w-8 h-8 flex items-center justify-center bg-guinda rounded-full text-white font-bold hover:bg-red-800 shadow-sm transition">+</button>
                             </div>
+                            <button onclick="agregarAlCarrito(this)" class="flex-1 bg-negro text-white font-bold py-2.5 px-4 rounded-xl hover:bg-amarillo hover:text-guinda transition-colors shadow-lg flex justify-center items-center gap-2">
+                                Agregar <i class="fa-solid fa-cart-plus"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="tarjeta-plato bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col h-full transform hover:scale-105 z-10">
-                    <div class="h-48 bg-gray-300 bg-cover bg-center group-hover:scale-105 transition duration-500" style="background-image: url('https://menuperu.blob.core.windows.net/menuperu/recetas/c213x310/rachi-anticuchero-3081.jpg');"></div>
-                    <div class="p-6 relative flex flex-col flex-grow">
-                        <div class="absolute -top-5 right-5 bg-amarillo text-guinda font-bold px-3 py-1 rounded-full shadow-md">S/ 23.00</div>
-                        <h4 class="text-xl font-bold text-guinda mb-2">Surtido #2</h4>
-                        <p class="text-gray-500 text-sm mb-4 flex-grow">Combinación potente: Corazón, rachi, choncholí, bofe e hígado.</p>
-                        <div class="mt-auto pt-4 border-t border-gray-100">
-                             <div class="flex flex-row items-center justify-between gap-3">
-                                <div class="flex items-center border-2 border-gray-200 rounded-lg shrink-0">
-                                    <button onclick="actualizarCantidad(this, -1)" class="px-3 py-1 text-gray-600 hover:bg-gray-100 font-bold rounded-l-md">-</button>
-                                    <span class="cantidad-numero px-3 font-bold text-negro">1</span>
-                                    <button onclick="actualizarCantidad(this, 1)" class="px-3 py-1 text-guinda hover:bg-red-50 font-bold rounded-r-md">+</button>
-                                </div>
-                                <button onclick="agregarAlCarrito(this)" class="flex-1 border-2 border-guinda text-guinda font-bold py-2 px-4 rounded-lg hover:bg-guinda hover:text-white transition">Agregar</button>
+                <div class="reveal-up delay-100 tarjeta-plato bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col h-full group transform hover:-translate-y-2">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('Images/logo.png');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 right-4 text-white text-right">
+                            <span class="text-xs opacity-80 block">Precio</span>
+                            <span class="text-2xl font-bold">S/ 23.00</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h4 class="text-xl font-bold text-guinda mb-2 group-hover:text-amarillo transition-colors">Surtido #2</h4>
+                        <p class="text-gray-500 text-sm mb-6 flex-grow leading-relaxed">Combinación potente: Corazón, rachi, choncholí, bofe e hígado.</p>
+                        <div class="pt-4 border-t border-gray-100 flex items-center justify-between gap-4">
+                            <div class="flex items-center bg-gray-100 rounded-full p-1">
+                                <button onclick="actualizarCantidad(this, -1)" class="w-8 h-8 flex items-center justify-center bg-white rounded-full text-gray-600 font-bold hover:text-guinda shadow-sm transition">-</button>
+                                <span class="cantidad-numero w-8 text-center font-bold text-negro text-sm">1</span>
+                                <button onclick="actualizarCantidad(this, 1)" class="w-8 h-8 flex items-center justify-center bg-guinda rounded-full text-white font-bold hover:bg-red-800 shadow-sm transition">+</button>
                             </div>
+                            <button onclick="agregarAlCarrito(this)" class="flex-1 bg-negro text-white font-bold py-2.5 px-4 rounded-xl hover:bg-amarillo hover:text-guinda transition-colors shadow-lg flex justify-center items-center gap-2">
+                                Agregar <i class="fa-solid fa-cart-plus"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="tarjeta-plato bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col h-full transform hover:scale-105 z-10">
-                    <div class="h-48 bg-gray-300 bg-cover bg-center group-hover:scale-105 transition duration-500" style="background-image: url('Images/surtido.png');"></div>
-                    <div class="p-6 relative flex flex-col flex-grow">
-                        <div class="absolute -top-5 right-5 bg-amarillo text-guinda font-bold px-3 py-1 rounded-full shadow-md">S/ 15.00</div>
-                        <h4 class="text-xl font-bold text-guinda mb-2">Surtido #1</h4>
-                        <p class="text-gray-500 text-sm mb-4 flex-grow">El clásico trío parrillero: Corazón, rachi y choncholí.</p>
-                        <div class="mt-auto pt-4 border-t border-gray-100">
-                             <div class="flex flex-row items-center justify-between gap-3">
-                                <div class="flex items-center border-2 border-gray-200 rounded-lg shrink-0">
-                                    <button onclick="actualizarCantidad(this, -1)" class="px-3 py-1 text-gray-600 hover:bg-gray-100 font-bold rounded-l-md">-</button>
-                                    <span class="cantidad-numero px-3 font-bold text-negro">1</span>
-                                    <button onclick="actualizarCantidad(this, 1)" class="px-3 py-1 text-guinda hover:bg-red-50 font-bold rounded-r-md">+</button>
-                                </div>
-                                <button onclick="agregarAlCarrito(this)" class="flex-1 border-2 border-guinda text-guinda font-bold py-2 px-4 rounded-lg hover:bg-guinda hover:text-white transition">Agregar</button>
+                <div class="reveal-up delay-200 tarjeta-plato bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col h-full group transform hover:-translate-y-2">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('Images/surtido.png');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 right-4 text-white text-right">
+                            <span class="text-xs opacity-80 block">Precio</span>
+                            <span class="text-2xl font-bold">S/ 15.00</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h4 class="text-xl font-bold text-guinda mb-2 group-hover:text-amarillo transition-colors">Surtido #1</h4>
+                        <p class="text-gray-500 text-sm mb-6 flex-grow leading-relaxed">El clásico trío parrillero: Corazón, rachi y choncholí.</p>
+                        <div class="pt-4 border-t border-gray-100 flex items-center justify-between gap-4">
+                            <div class="flex items-center bg-gray-100 rounded-full p-1">
+                                <button onclick="actualizarCantidad(this, -1)" class="w-8 h-8 flex items-center justify-center bg-white rounded-full text-gray-600 font-bold hover:text-guinda shadow-sm transition">-</button>
+                                <span class="cantidad-numero w-8 text-center font-bold text-negro text-sm">1</span>
+                                <button onclick="actualizarCantidad(this, 1)" class="w-8 h-8 flex items-center justify-center bg-guinda rounded-full text-white font-bold hover:bg-red-800 shadow-sm transition">+</button>
                             </div>
+                            <button onclick="agregarAlCarrito(this)" class="flex-1 bg-negro text-white font-bold py-2.5 px-4 rounded-xl hover:bg-amarillo hover:text-guinda transition-colors shadow-lg flex justify-center items-center gap-2">
+                                Agregar <i class="fa-solid fa-cart-plus"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <h3 class="text-2xl font-bold text-negro mb-6 border-l-8 border-guinda pl-4">🍗 Especialidades</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-                <div class="tarjeta-plato bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col h-full transform hover:scale-105 z-10">
-                    <div class="h-40 bg-gray-200 bg-cover bg-center" style="background-image: url('Images/logo2.png');"></div>
-                    <div class="p-5 flex flex-col flex-grow">
-                        <div class="flex justify-between items-center mb-2">
-                            <h4 class="font-bold text-guinda">Bistec de Corazón</h4>
-                            <span class="bg-guinda text-white text-xs px-2 py-1 rounded font-bold">S/ 25.00</span>
+            <div class="flex items-center gap-4 mb-8 reveal-up">
+                <div class="bg-guinda text-white p-2 rounded-lg"><i class="fa-solid fa-drumstick-bite"></i></div>
+                <h3 class="text-2xl font-bold text-negro">Especialidades</h3>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+                <div class="reveal-up tarjeta-plato bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col h-full group transform hover:-translate-y-2">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('Images/logo2.png');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 right-4 text-white text-right">
+                            <span class="text-xs opacity-80 block">Precio</span>
+                            <span class="text-2xl font-bold">S/ 25.00</span>
                         </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h4 class="text-lg font-bold text-guinda mb-2 group-hover:text-amarillo transition-colors">Bistec de Corazón</h4>
                         <p class="text-xs text-gray-500 mb-4 flex-grow">Corte especial de corazón.</p>
-                        <div class="mt-auto pt-3 border-t border-gray-100">
-                             <div class="flex flex-row items-center justify-between gap-2">
-                                <div class="flex items-center border rounded-lg shrink-0">
-                                    <button onclick="actualizarCantidad(this, -1)" class="px-2 py-1 text-gray-600 hover:bg-gray-100 font-bold">-</button>
-                                    <span class="cantidad-numero px-2 font-bold text-sm text-negro">1</span>
-                                    <button onclick="actualizarCantidad(this, 1)" class="px-2 py-1 text-guinda hover:bg-red-50 font-bold">+</button>
-                                </div>
-                                <button onclick="agregarAlCarrito(this)" class="flex-1 border-2 border-guinda text-guinda font-bold py-2 px-4 rounded-lg hover:bg-guinda hover:text-white transition">Agregar</button>
+                        <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between gap-3">
+                            <div class="flex items-center bg-gray-100 rounded-full p-1">
+                                <button onclick="actualizarCantidad(this, -1)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-gray-500 font-bold hover:text-guinda shadow-sm">-</button>
+                                <span class="cantidad-numero w-6 text-center font-bold text-negro text-sm">1</span>
+                                <button onclick="actualizarCantidad(this, 1)" class="w-6 h-6 flex items-center justify-center bg-guinda rounded-full text-white font-bold hover:bg-red-800 shadow-sm">+</button>
                             </div>
+                            <button onclick="agregarAlCarrito(this)" class="flex-1 bg-negro text-white font-bold py-2.5 px-4 rounded-xl hover:bg-amarillo hover:text-guinda transition-colors shadow-lg flex justify-center items-center gap-2">
+                                Agregar <i class="fa-solid fa-cart-plus"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="tarjeta-plato bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col h-full transform hover:scale-105 z-10">
-                    <div class="h-40 bg-gray-200 bg-cover bg-center" style="background-image: url('Images/anticucho.png');"></div>
-                    <div class="p-5 flex flex-col flex-grow">
-                        <div class="flex justify-between items-center mb-2">
-                            <h4 class="font-bold text-guinda">Anticuchos Clásicos</h4>
-                            <span class="bg-amarillo text-guinda text-xs px-2 py-1 rounded font-bold">S/ 15.00</span>
+                <div class="reveal-up delay-100 tarjeta-plato bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col h-full group transform hover:-translate-y-2">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('Images/anticucho.png');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 right-4 text-white text-right">
+                            <span class="text-xs opacity-80 block">Precio</span>
+                            <span class="text-2xl font-bold">S/ 15.00</span>
                         </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h4 class="text-lg font-bold text-guinda mb-2 group-hover:text-amarillo transition-colors leading-tight">Anticuchos Clásicos</h4>
                         <p class="text-xs text-gray-500 mb-4 flex-grow">3 palitos clásicos.</p>
-                        <div class="mt-auto pt-3 border-t border-gray-100">
-                             <div class="flex flex-row items-center justify-between gap-2">
-                                <div class="flex items-center border rounded-lg shrink-0">
-                                    <button onclick="actualizarCantidad(this, -1)" class="px-2 py-1 text-gray-600 hover:bg-gray-100 font-bold">-</button>
-                                    <span class="cantidad-numero px-2 font-bold text-sm text-negro">1</span>
-                                    <button onclick="actualizarCantidad(this, 1)" class="px-2 py-1 text-guinda hover:bg-red-50 font-bold">+</button>
-                                </div>
-                                <button onclick="agregarAlCarrito(this)" class="flex-1 border-2 border-guinda text-guinda font-bold py-2 px-4 rounded-lg hover:bg-guinda hover:text-white transition">Agregar</button>
+                        <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between gap-3">
+                            <div class="flex items-center bg-gray-100 rounded-full p-1">
+                                <button onclick="actualizarCantidad(this, -1)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-gray-500 font-bold hover:text-guinda shadow-sm">-</button>
+                                <span class="cantidad-numero w-6 text-center font-bold text-negro text-sm">1</span>
+                                <button onclick="actualizarCantidad(this, 1)" class="w-6 h-6 flex items-center justify-center bg-guinda rounded-full text-white font-bold hover:bg-red-800 shadow-sm">+</button>
                             </div>
+                            <button onclick="agregarAlCarrito(this)" class="flex-1 bg-negro text-white font-bold py-2.5 px-4 rounded-xl hover:bg-amarillo hover:text-guinda transition-colors shadow-lg flex justify-center items-center gap-2">
+                                Agregar <i class="fa-solid fa-cart-plus"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="tarjeta-plato bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col h-full transform hover:scale-105 z-10">
-                    <div class="h-40 bg-gray-200 bg-cover bg-center" style="background-image: url('Images/pollo.png');"></div>
-                    <div class="p-5 flex flex-col flex-grow">
-                        <div class="flex justify-between items-center mb-2">
-                            <h4 class="font-bold text-guinda">Pollo Broaster</h4>
-                            <span class="bg-amarillo text-guinda text-xs px-2 py-1 rounded font-bold">S/ 15.00</span>
+                <div class="reveal-up delay-200 tarjeta-plato bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col h-full group transform hover:-translate-y-2">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('Images/pollo.png');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 right-4 text-white text-right">
+                            <span class="text-xs opacity-80 block">Precio</span>
+                            <span class="text-2xl font-bold">S/ 15.00</span>
                         </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h4 class="text-lg font-bold text-guinda mb-2 group-hover:text-amarillo transition-colors leading-tight">Pollo Broaster</h4>
                         <p class="text-xs text-gray-500 mb-4 flex-grow">Con arroz chaufa y papas fritas.</p>
-                        <div class="mt-auto pt-3 border-t border-gray-100">
-                             <div class="flex flex-row items-center justify-between gap-2">
-                                <div class="flex items-center border rounded-lg shrink-0">
-                                    <button onclick="actualizarCantidad(this, -1)" class="px-2 py-1 text-gray-600 hover:bg-gray-100 font-bold">-</button>
-                                    <span class="cantidad-numero px-2 font-bold text-sm text-negro">1</span>
-                                    <button onclick="actualizarCantidad(this, 1)" class="px-2 py-1 text-guinda hover:bg-red-50 font-bold">+</button>
-                                </div>
-                                <button onclick="agregarAlCarrito(this)" class="flex-1 border-2 border-guinda text-guinda font-bold py-2 px-4 rounded-lg hover:bg-guinda hover:text-white transition">Agregar</button>
+                        <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between gap-3">
+                            <div class="flex items-center bg-gray-100 rounded-full p-1">
+                                <button onclick="actualizarCantidad(this, -1)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-gray-500 font-bold hover:text-guinda shadow-sm">-</button>
+                                <span class="cantidad-numero w-6 text-center font-bold text-negro text-sm">1</span>
+                                <button onclick="actualizarCantidad(this, 1)" class="w-6 h-6 flex items-center justify-center bg-guinda rounded-full text-white font-bold hover:bg-red-800 shadow-sm">+</button>
                             </div>
+                            <button onclick="agregarAlCarrito(this)" class="flex-1 bg-negro text-white font-bold py-2.5 px-4 rounded-xl hover:bg-amarillo hover:text-guinda transition-colors shadow-lg flex justify-center items-center gap-2">
+                                Agregar <i class="fa-solid fa-cart-plus"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="tarjeta-plato bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col h-full transform hover:scale-105 z-10">
-                    <div class="h-40 bg-gray-200 bg-cover bg-center" style="background-image: url('Images/caldo.png');"></div>
+                <div class="reveal-up delay-300 tarjeta-plato bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col h-full group transform hover:-translate-y-2">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('Images/caldo.png');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 right-4 text-white text-right">
+                            <span class="text-xs opacity-80 block">Precio</span>
+                            <span class="text-2xl font-bold">S/ 15.00</span>
+                        </div>
+                    </div>
                     <div class="p-5 flex flex-col flex-grow">
-                        <div class="flex justify-between items-center mb-2">
-                            <h4 class="font-bold text-guinda">Caldo de Gallina</h4>
-                            <span class="bg-amarillo text-guinda text-xs px-2 py-1 rounded font-bold">S/ 15.00</span>
-                        </div>
+                        <h4 class="text-lg font-bold text-guinda mb-2 group-hover:text-amarillo transition-colors leading-tight">Caldo de Gallina</h4>
                         <p class="text-xs text-gray-500 mb-4 flex-grow">Contundente.</p>
-                        <div class="mt-auto pt-3 border-t border-gray-100">
-                             <div class="flex flex-row items-center justify-between gap-2">
-                                <div class="flex items-center border rounded-lg shrink-0">
-                                    <button onclick="actualizarCantidad(this, -1)" class="px-2 py-1 text-gray-600 hover:bg-gray-100 font-bold">-</button>
-                                    <span class="cantidad-numero px-2 font-bold text-sm text-negro">1</span>
-                                    <button onclick="actualizarCantidad(this, 1)" class="px-2 py-1 text-guinda hover:bg-red-50 font-bold">+</button>
-                                </div>
-                                <button onclick="agregarAlCarrito(this)" class="flex-1 border border-guinda text-guinda text-sm font-bold py-2 rounded-lg hover:bg-guinda hover:text-white transition">Agregar</button>
+                        <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between gap-3">
+                            <div class="flex items-center bg-gray-100 rounded-full p-1">
+                                <button onclick="actualizarCantidad(this, -1)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-gray-500 font-bold hover:text-guinda shadow-sm">-</button>
+                                <span class="cantidad-numero w-6 text-center font-bold text-negro text-sm">1</span>
+                                <button onclick="actualizarCantidad(this, 1)" class="w-6 h-6 flex items-center justify-center bg-guinda rounded-full text-white font-bold hover:bg-red-800 shadow-sm">+</button>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h3 class="text-2xl font-bold text-negro mb-6 border-l-8 border-guinda pl-4">🍢 Porciones Individuales</h3>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 mb-16">
-                
-                <div class="tarjeta-plato bg-white p-3 rounded-lg shadow border-t-4 border-amarillo text-center hover:scale-105 transition flex flex-col justify-between h-full">
-                    <div>
-                        <h4 class="font-bold text-guinda">Rachi</h4>
-                        <span class="block mt-1 font-bold text-lg text-negro">S/ 15.00</span>
-                    </div>
-                    <div class="mt-3 pt-3 border-t border-gray-100">
-                        <div class="flex flex-col xl:flex-row items-center justify-between gap-2">
-                            <div class="flex items-center border rounded-lg bg-gray-50 w-full xl:w-auto justify-between xl:justify-start">
-                                <button onclick="actualizarCantidad(this, -1)" class="px-3 py-1 text-gray-600 font-bold hover:bg-gray-200 rounded-l-lg">-</button>
-                                <span class="cantidad-numero px-2 font-bold text-sm text-negro">1</span>
-                                <button onclick="actualizarCantidad(this, 1)" class="px-3 py-1 text-guinda font-bold hover:bg-red-50 rounded-r-lg">+</button>
-                            </div>                                          <!--flex-1 border-2 border-guinda text-guinda font-bold py-2 px-4 rounded-lg hover:bg-guinda hover:text-white transition-->
-                            <button onclick="agregarAlCarrito(this)" class="w-full xl:w-auto border-2 border-guinda text-guinda text-xs font-bold py-2 px-3 rounded-lg hover:bg-guinda hover:text-white transition">
-                                Agregar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tarjeta-plato bg-white p-3 rounded-lg shadow border-t-4 border-amarillo text-center hover:scale-105 transition flex flex-col justify-between h-full">
-                    <div>
-                        <h4 class="font-bold text-guinda">Choncholí</h4>
-                        <span class="block mt-1 font-bold text-lg text-negro">S/ 15.00</span>
-                    </div>
-                    <div class="mt-3 pt-3 border-t border-gray-100">
-                        <div class="flex flex-col xl:flex-row items-center justify-between gap-2">
-                            <div class="flex items-center border rounded-lg bg-gray-50 w-full xl:w-auto justify-between xl:justify-start">
-                                <button onclick="actualizarCantidad(this, -1)" class="px-3 py-1 text-gray-600 font-bold hover:bg-gray-200 rounded-l-lg">-</button>
-                                <span class="cantidad-numero px-2 font-bold text-sm text-negro">1</span>
-                                <button onclick="actualizarCantidad(this, 1)" class="px-3 py-1 text-guinda font-bold hover:bg-red-50 rounded-r-lg">+</button>
-                            </div>
-                            <button onclick="agregarAlCarrito(this)" class="w-full xl:w-auto border-2 border-guinda text-guinda text-xs font-bold py-2 px-3 rounded-lg hover:bg-guinda hover:text-white transition">
-                                Agregar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tarjeta-plato bg-white p-3 rounded-lg shadow border-t-4 border-amarillo text-center hover:scale-105 transition flex flex-col justify-between h-full">
-                    <div>
-                        <h4 class="font-bold text-guinda">Bofe</h4>
-                        <span class="block mt-1 font-bold text-lg text-negro">S/ 15.00</span>
-                    </div>
-                    <div class="mt-3 pt-3 border-t border-gray-100">
-                        <div class="flex flex-col xl:flex-row items-center justify-between gap-2">
-                            <div class="flex items-center border rounded-lg bg-gray-50 w-full xl:w-auto justify-between xl:justify-start">
-                                <button onclick="actualizarCantidad(this, -1)" class="px-3 py-1 text-gray-600 font-bold hover:bg-gray-200 rounded-l-lg">-</button>
-                                <span class="cantidad-numero px-2 font-bold text-sm text-negro">1</span>
-                                <button onclick="actualizarCantidad(this, 1)" class="px-3 py-1 text-guinda font-bold hover:bg-red-50 rounded-r-lg">+</button>
-                            </div>
-                            <button onclick="agregarAlCarrito(this)" class="w-full xl:w-auto border-2 border-guinda text-guinda text-xs font-bold py-2 px-3 rounded-lg hover:bg-guinda hover:text-white transition">
-                                Agregar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tarjeta-plato bg-white p-3 rounded-lg shadow border-t-4 border-amarillo text-center hover:scale-105 transition flex flex-col justify-between h-full">
-                    <div>
-                        <h4 class="font-bold text-guinda">Hígado</h4>
-                        <span class="block mt-1 font-bold text-lg text-negro">S/ 15.00</span>
-                    </div>
-                    <div class="mt-3 pt-3 border-t border-gray-100">
-                        <div class="flex flex-col xl:flex-row items-center justify-between gap-2">
-                            <div class="flex items-center border rounded-lg bg-gray-50 w-full xl:w-auto justify-between xl:justify-start">
-                                <button onclick="actualizarCantidad(this, -1)" class="px-3 py-1 text-gray-600 font-bold hover:bg-gray-200 rounded-l-lg">-</button>
-                                <span class="cantidad-numero px-2 font-bold text-sm text-negro">1</span>
-                                <button onclick="actualizarCantidad(this, 1)" class="px-3 py-1 text-guinda font-bold hover:bg-red-50 rounded-r-lg">+</button>
-                            </div>
-                            <button onclick="agregarAlCarrito(this)" class="w-full xl:w-auto border-2 border-guinda text-guinda text-xs font-bold py-2 px-3 rounded-lg hover:bg-guinda hover:text-white transition">
-                                Agregar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tarjeta-plato bg-white p-3 rounded-lg shadow border-t-4 border-amarillo text-center hover:scale-105 transition flex flex-col justify-between h-full">
-                    <div>
-                        <h4 class="font-bold text-guinda">Mollejitas</h4>
-                        <span class="block mt-1 font-bold text-lg text-negro">S/ 15.00</span>
-                    </div>
-                    <div class="mt-3 pt-3 border-t border-gray-100">
-                        <div class="flex flex-col xl:flex-row items-center justify-between gap-2">
-                            <div class="flex items-center border rounded-lg bg-gray-50 w-full xl:w-auto justify-between xl:justify-start">
-                                <button onclick="actualizarCantidad(this, -1)" class="px-3 py-1 text-gray-600 font-bold hover:bg-gray-200 rounded-l-lg">-</button>
-                                <span class="cantidad-numero px-2 font-bold text-sm text-negro">1</span>
-                                <button onclick="actualizarCantidad(this, 1)" class="px-3 py-1 text-guinda font-bold hover:bg-red-50 rounded-r-lg">+</button>
-                            </div>
-                            <button onclick="agregarAlCarrito(this)" class="w-full xl:w-auto border-2 border-guinda text-guinda text-xs font-bold py-2 px-3 rounded-lg hover:bg-guinda hover:text-white transition">
-                                Agregar
+                            <button onclick="agregarAlCarrito(this)" class="flex-1 bg-negro text-white font-bold py-2.5 px-4 rounded-xl hover:bg-amarillo hover:text-guinda transition-colors shadow-lg flex justify-center items-center gap-2">
+                                Agregar <i class="fa-solid fa-cart-plus"></i>
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <h3 class="text-2xl font-bold text-negro mb-6 border-l-8 border-guinda pl-4">🥔 Guarniciones</h3>
+            <div class="flex items-center gap-4 mb-8 mt-12 reveal-up">
+                <div class="bg-guinda text-white p-2 rounded-lg"><i class="fa-solid fa-plate-wheat"></i></div>
+                <h3 class="text-2xl font-bold text-negro">Porciones Individuales</h3>
+            </div>
             
-            <div class="flex flex-wrap gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+                <div class="reveal-up tarjeta-plato bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col h-full group transform hover:-translate-y-2">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('Images/logo2.png');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 right-4 text-white text-right">
+                            <span class="text-xs opacity-80 block">Precio</span>
+                            <span class="text-2xl font-bold">S/ 15.00</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h4 class="text-lg font-bold text-guinda mb-2 group-hover:text-amarillo transition-colors leading-tight">Rachi</h4>
+                        <p class="text-xs text-transparent mb-4 flex-grow select-none">.</p> 
+                        <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between gap-3">
+                            <div class="flex items-center bg-gray-100 rounded-full p-1">
+                                <button onclick="actualizarCantidad(this, -1)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-gray-500 font-bold hover:text-guinda shadow-sm">-</button>
+                                <span class="cantidad-numero w-6 text-center font-bold text-negro text-sm">1</span>
+                                <button onclick="actualizarCantidad(this, 1)" class="w-6 h-6 flex items-center justify-center bg-guinda rounded-full text-white font-bold hover:bg-red-800 shadow-sm">+</button>
+                            </div>
+                            <button onclick="agregarAlCarrito(this)" class="flex-1 bg-negro text-white font-bold py-2.5 px-4 rounded-xl hover:bg-amarillo hover:text-guinda transition-colors shadow-lg flex justify-center items-center gap-2">
+                                Agregar <i class="fa-solid fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal-up delay-100 tarjeta-plato bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col h-full group transform hover:-translate-y-2">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('Images/logo2.png');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 right-4 text-white text-right">
+                            <span class="text-xs opacity-80 block">Precio</span>
+                            <span class="text-2xl font-bold">S/ 15.00</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h4 class="text-lg font-bold text-guinda mb-2 group-hover:text-amarillo transition-colors leading-tight">Choncholí</h4>
+                        <p class="text-xs text-transparent mb-4 flex-grow select-none">.</p>
+                        <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between gap-3">
+                            <div class="flex items-center bg-gray-100 rounded-full p-1">
+                                <button onclick="actualizarCantidad(this, -1)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-gray-500 font-bold hover:text-guinda shadow-sm">-</button>
+                                <span class="cantidad-numero w-6 text-center font-bold text-negro text-sm">1</span>
+                                <button onclick="actualizarCantidad(this, 1)" class="w-6 h-6 flex items-center justify-center bg-guinda rounded-full text-white font-bold hover:bg-red-800 shadow-sm">+</button>
+                            </div>
+                            <button onclick="agregarAlCarrito(this)" class="flex-1 bg-negro text-white font-bold py-2.5 px-4 rounded-xl hover:bg-amarillo hover:text-guinda transition-colors shadow-lg flex justify-center items-center gap-2">
+                                Agregar <i class="fa-solid fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal-up delay-200 tarjeta-plato bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col h-full group transform hover:-translate-y-2">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('Images/logo2.png');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 right-4 text-white text-right">
+                            <span class="text-xs opacity-80 block">Precio</span>
+                            <span class="text-2xl font-bold">S/ 15.00</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h4 class="text-lg font-bold text-guinda mb-2 group-hover:text-amarillo transition-colors leading-tight">Bofe</h4>
+                        <p class="text-xs text-transparent mb-4 flex-grow select-none">.</p>
+                        <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between gap-3">
+                            <div class="flex items-center bg-gray-100 rounded-full p-1">
+                                <button onclick="actualizarCantidad(this, -1)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-gray-500 font-bold hover:text-guinda shadow-sm">-</button>
+                                <span class="cantidad-numero w-6 text-center font-bold text-negro text-sm">1</span>
+                                <button onclick="actualizarCantidad(this, 1)" class="w-6 h-6 flex items-center justify-center bg-guinda rounded-full text-white font-bold hover:bg-red-800 shadow-sm">+</button>
+                            </div>
+                            <button onclick="agregarAlCarrito(this)" class="flex-1 bg-negro text-white font-bold py-2.5 px-4 rounded-xl hover:bg-amarillo hover:text-guinda transition-colors shadow-lg flex justify-center items-center gap-2">
+                                Agregar <i class="fa-solid fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal-up delay-300 tarjeta-plato bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col h-full group transform hover:-translate-y-2">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('Images/logo2.png');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 right-4 text-white text-right">
+                            <span class="text-xs opacity-80 block">Precio</span>
+                            <span class="text-2xl font-bold">S/ 15.00</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h4 class="text-lg font-bold text-guinda mb-2 group-hover:text-amarillo transition-colors leading-tight">Higado</h4>
+                        <p class="text-xs text-transparent mb-4 flex-grow select-none">.</p>
+                        <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between gap-3">
+                            <div class="flex items-center bg-gray-100 rounded-full p-1">
+                                <button onclick="actualizarCantidad(this, -1)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-gray-500 font-bold hover:text-guinda shadow-sm">-</button>
+                                <span class="cantidad-numero w-6 text-center font-bold text-negro text-sm">1</span>
+                                <button onclick="actualizarCantidad(this, 1)" class="w-6 h-6 flex items-center justify-center bg-guinda rounded-full text-white font-bold hover:bg-red-800 shadow-sm">+</button>
+                            </div>
+                            <button onclick="agregarAlCarrito(this)" class="flex-1 bg-negro text-white font-bold py-2.5 px-4 rounded-xl hover:bg-amarillo hover:text-guinda transition-colors shadow-lg flex justify-center items-center gap-2">
+                                Agregar <i class="fa-solid fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 
-                <div class="tarjeta-plato bg-gray-200 rounded-full p-2 pr-4 flex items-center justify-between w-full sm:w-auto gap-6 sm:gap-8 shadow-sm hover:shadow-md transition border border-gray-100">
+
+                <div class="reveal-up delay-300 tarjeta-plato bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col h-full group transform hover:-translate-y-2">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('Images/logo2.png');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 right-4 text-white text-right">
+                            <span class="text-xs opacity-80 block">Precio</span>
+                            <span class="text-2xl font-bold">S/ 15.00</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h4 class="text-lg font-bold text-guinda mb-2 group-hover:text-amarillo transition-colors leading-tight">Mollejitas</h4>
+                        <p class="text-xs text-transparent mb-4 flex-grow select-none">.</p>
+                        <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between gap-3">
+                            <div class="flex items-center bg-gray-100 rounded-full p-1">
+                                <button onclick="actualizarCantidad(this, -1)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-gray-500 font-bold hover:text-guinda shadow-sm">-</button>
+                                <span class="cantidad-numero w-6 text-center font-bold text-negro text-sm">1</span>
+                                <button onclick="actualizarCantidad(this, 1)" class="w-6 h-6 flex items-center justify-center bg-guinda rounded-full text-white font-bold hover:bg-red-800 shadow-sm">+</button>
+                            </div>
+                            <button onclick="agregarAlCarrito(this)" class="flex-1 bg-negro text-white font-bold py-2.5 px-4 rounded-xl hover:bg-amarillo hover:text-guinda transition-colors shadow-lg flex justify-center items-center gap-2">
+                                Agregar <i class="fa-solid fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="reveal-up text-2xl font-bold text-negro mb-6 border-l-8 border-guinda pl-4">🥔 Guarniciones</h3>
+            <div class="flex flex-wrap gap-6 reveal-up delay-100">
+                
+                <div class="tarjeta-plato bg-white rounded-full p-2 pr-6 flex items-center gap-6 shadow-sm hover:shadow-md transition border border-gray-200">
                     <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-2xl shadow-sm">🥔</div>
+                        <div class="w-14 h-14 rounded-full bg-amarillo/20 flex items-center justify-center text-3xl">🥔</div>
                         <div>
                             <h4 class="font-bold text-negro text-sm leading-tight">Papas</h4>
                             <span class="text-guinda font-bold text-xs block">S/ 5.00</span>
@@ -409,23 +527,21 @@
                     </div>
                     
                     <div class="flex items-center gap-3">
-                         <div class="flex items-center bg-white border border-gray-300 rounded-full px-1 h-8 shadow-inner">
-                            <button onclick="actualizarCantidad(this, -1)" class="w-6 text-gray-500 hover:text-guinda font-bold text-lg leading-none pb-1 flex justify-center">-</button>
-                            <span class="cantidad-numero font-bold text-sm text-negro w-4 text-center">1</span>
-                            <button onclick="actualizarCantidad(this, 1)" class="w-6 text-guinda hover:text-red-800 font-bold text-lg leading-none pb-1 flex justify-center">+</button>
+                         <div class="flex items-center bg-gray-100 rounded-full px-2 h-9">
+                            <button onclick="actualizarCantidad(this, -1)" class="w-6 text-gray-500 hover:text-guinda font-bold text-lg pb-1 flex justify-center">-</button>
+                            <span class="cantidad-numero font-bold text-sm text-negro w-6 text-center">1</span>
+                            <button onclick="actualizarCantidad(this, 1)" class="w-6 text-guinda hover:text-red-800 font-bold text-lg pb-1 flex justify-center">+</button>
                         </div>
                         
-                        <button onclick="agregarAlCarrito(this)" class="group w-8 h-8 rounded-full border-2 border-guinda text-guinda hover:bg-guinda hover:text-white flex items-center justify-center transition shadow-sm">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-hover:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                            </svg>
+                        <button onclick="agregarAlCarrito(this)" class="group w-10 h-10 rounded-full bg-negro text-white hover:bg-guinda flex items-center justify-center transition shadow-lg">
+                            <i class="fa-solid fa-plus transition-transform group-hover:rotate-90"></i>
                         </button>
                     </div>
                 </div>
 
-                <div class="tarjeta-plato bg-gray-200 rounded-full p-2 pr-4 flex items-center justify-between w-full sm:w-auto gap-6 sm:gap-8 shadow-sm hover:shadow-md transition border border-gray-100">
+                <div class="tarjeta-plato bg-white rounded-full p-2 pr-6 flex items-center gap-6 shadow-sm hover:shadow-md transition border border-gray-200">
                     <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-2xl shadow-sm">🌽</div>
+                        <div class="w-14 h-14 rounded-full bg-amarillo/20 flex items-center justify-center text-3xl">🌽</div>
                         <div>
                             <h4 class="font-bold text-negro text-sm leading-tight">Choclo</h4>
                             <span class="text-guinda font-bold text-xs block">S/ 5.00</span>
@@ -433,127 +549,197 @@
                     </div>
                     
                     <div class="flex items-center gap-3">
-                         <div class="flex items-center bg-white border border-gray-300 rounded-full px-1 h-8 shadow-inner">
-                            <button onclick="actualizarCantidad(this, -1)" class="w-6 text-gray-500 hover:text-guinda font-bold text-lg leading-none pb-1 flex justify-center">-</button>
-                            <span class="cantidad-numero font-bold text-sm text-negro w-4 text-center">1</span>
-                            <button onclick="actualizarCantidad(this, 1)" class="w-6 text-guinda hover:text-red-800 font-bold text-lg leading-none pb-1 flex justify-center">+</button>
+                         <div class="flex items-center bg-gray-100 rounded-full px-2 h-9">
+                            <button onclick="actualizarCantidad(this, -1)" class="w-6 text-gray-500 hover:text-guinda font-bold text-lg pb-1 flex justify-center">-</button>
+                            <span class="cantidad-numero font-bold text-sm text-negro w-6 text-center">1</span>
+                            <button onclick="actualizarCantidad(this, 1)" class="w-6 text-guinda hover:text-red-800 font-bold text-lg pb-1 flex justify-center">+</button>
                         </div>
                         
-                        <button onclick="agregarAlCarrito(this)" class="group w-8 h-8 rounded-full border-2 border-guinda text-guinda hover:bg-guinda hover:text-white flex items-center justify-center transition shadow-sm">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-hover:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                            </svg>
+                        <button onclick="agregarAlCarrito(this)" class="group w-10 h-10 rounded-full bg-negro text-white hover:bg-guinda flex items-center justify-center transition shadow-lg">
+                            <i class="fa-solid fa-plus transition-transform group-hover:rotate-90"></i>
                         </button>
                     </div>
                 </div>
-
             </div>
 
         </div>
     </section>
 
-    <footer class="bg-negro text-white pt-16 pb-8 border-t-8 border-guinda mt-auto">
-        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
-            <div>
-                <div class="flex items-center gap-4 mb-4 justify-center md:justify-start">
-                    <img src="Images/logo2.png" alt="logo" class="w-16 h-auto object-contain">
-                    <span class="text-amarillo font-extrabold text-2xl uppercase">
-                        Anticucheria Melchorita
+    <footer class="bg-negro text-white pt-16 pb-8 border-t-8 border-guinda mt-auto relative overflow-hidden">
+        
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-guinda opacity-5 rounded-full filter blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
+            
+            <div class="text-center md:text-left">
+                <div class="flex items-center gap-3 mb-6 justify-center md:justify-start">
+                    <img src="Images/logo2.png" alt="logo" class="h-16 w-auto object-contain drop-shadow-sm">
+                    <span class="text-amarillo font-extrabold text-xl sm:text-2xl uppercase leading-none">
+                        Anticucheria <br> Melchorita
                     </span>
                 </div>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Llevando la tradición anticuchera a tu mesa desde hace más de dos décadas. Calidad, sabor y buen servicio.
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                    Tradición y sabor en el corazón de Chincha. Los mejores anticuchos desde hace más de 20 años.
                 </p>
+                
+                <div class="flex gap-4 justify-center md:justify-start">
+                    <a href="https://wa.me/51956469567" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-[#25D366] hover:text-white transition-all hover:scale-110">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com/anticucheria_melchorita" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-[#E1306C] hover:text-white transition-all hover:scale-110">
+                        <i class="fa-brands fa-instagram text-xl"></i>
+                    </a>
+                    <a href="tel:+51956469567" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition-all hover:scale-110">
+                        <i class="fa-solid fa-phone"></i>
+                    </a>
+                </div>
             </div>
-            <div>
-                <h4 class="text-lg font-bold mb-4 text-amarillo">Horarios de Atención</h4>
-                <ul class="text-gray-300 text-sm space-y-3">
-                    <li class="flex items-center justify-center md:justify-start gap-2">
-                        <i class="fa-regular fa-clock text-guinda"></i>
-                        <span>Lun - Dom: 4:00 PM - 10:30 PM</span>
-                    </li>
-                </ul>
+            
+            <div class="text-center md:text-left flex flex-col md:items-center md:justify-start">
+                <div class="w-full md:w-auto">
+                    <h4 class="text-lg font-bold mb-6 text-amarillo border-b border-gray-800 pb-2 inline-block">Horarios</h4>
+                    <ul class="text-gray-300 text-sm space-y-4">
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fa-regular fa-clock text-guinda"></i>
+                            <span>Lun - Dom: 4:00 PM - 10:30 PM</span>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fa-solid fa-calendar-check text-guinda"></i>
+                            <span>Atendemos Feriados</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
-            <div>
-                <h4 class="text-lg font-bold mb-4 text-amarillo">Contáctanos</h4>
-                <ul class="text-gray-300 text-sm space-y-4">
-                    <li class="flex items-center justify-center md:justify-start gap-2">
-                        <i class="fa-solid fa-location-dot text-guinda text-lg"></i>
-                        <span>Plaza de armas 115, Grocio Prado</span>
-                    </li>
+            <div class="text-center md:text-left">
+                <h4 class="text-lg font-bold mb-6 text-amarillo border-b border-gray-800 pb-2 inline-block">Ubícanos</h4>
+                
+                <div class="text-gray-300 text-sm mb-4 flex justify-center md:justify-start gap-2">
+                    <i class="fa-solid fa-location-dot text-guinda text-lg mt-1"></i>
+                    <span>Plaza de Armas 115, <br> Grocio Prado, Chincha</span>
+                </div>
 
-                    <li class="mt-6">
-                        <div class="flex gap-4 justify-center md:justify-start">
-                            <a href="https://wa.me/51956469567" target="_blank" class="group relative w-10 h-10 flex items-center justify-center rounded-full border border-gray-600 transition-all duration-300 hover:bg-[#25D366] hover:border-[#25D366] hover:scale-110">
-                                <i class="fa-brands fa-whatsapp text-xl text-gray-400 group-hover:text-white transition-colors"></i>
-                            </a>
-                            <a href="tel:+51956469567" class="group relative w-10 h-10 flex items-center justify-center rounded-full border border-gray-600 transition-all duration-300 hover:bg-blue-600 hover:border-blue-600 hover:scale-110">
-                                <i class="fa-solid fa-phone text-lg text-gray-400 group-hover:text-white transition-colors"></i>
-                            </a>
-                            <a href="https://www.instagram.com/anticucheria_melchorita?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="group relative w-10 h-10 flex items-center justify-center rounded-full border border-gray-600 transition-all duration-300 hover:bg-[#E1306C] hover:border-[#E1306C] hover:scale-110">
-                                <i class="fa-brands fa-instagram text-xl text-gray-400 group-hover:text-white transition-colors"></i>
-                            </a>
-                        </div>
-                    </li>
-                </ul>
+                <div class="w-full h-48 rounded-xl overflow-hidden shadow-lg border border-gray-800 group hover:border-amarillo transition-colors bg-gray-800">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=Anticucheria%20Melchorita%20Grocio%20Prado&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                </div>
+                
+                <div class="mt-3 text-right">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Anticucheria+Melchorita+Grocio+Prado" target="_blank" class="text-xs text-gray-400 hover:text-amarillo transition flex items-center justify-end gap-1 font-bold">
+                        Ampliar mapa <i class="fa-solid fa-up-right-from-square text-[10px]"></i>
+                    </a>
+                </div>
             </div>
         </div>
 
-        <div class="text-center text-gray-600 text-xs mt-12 pt-8 border-t border-gray-800">
-            © 2026 Anticuchería Melchorita. Todos los derechos reservados.
+        <div class="text-center text-gray-600 text-xs mt-12 pt-6 border-t border-gray-800 max-w-7xl mx-auto px-6">
+            <span>© 2026 Anticuchería Melchorita. Todos los derechos reservados.</span>
         </div>
     </footer>
 
-    <div class="fixed bottom-5 right-5 z-50">
-        <button onclick="toggleCarrito()" class="bg-amarillo text-guinda p-4 rounded-full shadow-2xl hover:scale-110 transition flex items-center justify-center relative border-4 border-guinda">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-            <span id="cart-count" class="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full border-2 border-white hidden">0</span>
+    <div class="fixed bottom-6 right-6 z-50 animate-bounce" style="animation-duration: 2s;">
+        <button onclick="toggleCarrito()" class="bg-amarillo text-guinda w-16 h-16 rounded-full shadow-2xl hover:scale-110 transition flex items-center justify-center relative border-4 border-guinda">
+            <i class="fa-solid fa-cart-shopping text-2xl"></i>
+            <span id="cart-count" class="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full border-2 border-white shadow-sm hidden">0</span>
         </button>
     </div>
 
     <div id="carrito-modal" class="fixed inset-0 z-50 hidden">
-        <div class="absolute inset-0 bg-black bg-opacity-50 transition-opacity backdrop-blur-sm" onclick="toggleCarrito()"></div>
         
-        <div class="absolute inset-y-0 right-0 w-full sm:max-w-md bg-white shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full h-full" id="carrito-content">
+        <div class="absolute inset-0 bg-black/60 transition-opacity backdrop-blur-sm" onclick="toggleCarrito()"></div>
+        
+        <div id="carrito-content" class="absolute inset-y-0 right-0 w-full sm:max-w-md bg-white shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full h-full">
             
-            <div class="bg-guinda px-6 py-4 text-white flex justify-between items-center shadow-md z-10">
-                <div class="flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amarillo" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                    </svg>
-                    <h2 class="text-lg font-bold uppercase tracking-wide">Tu Pedido</h2>
+            <div class="bg-guinda px-6 py-4 text-white flex justify-between items-center shadow-lg z-20">
+                <div class="flex items-center gap-3">
+                    <div class="bg-white/10 p-2 rounded-full">
+                        <i class="fa-solid fa-basket-shopping text-amarillo text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold uppercase tracking-wide leading-none">Tu Pedido</h2>
+                        <span class="text-xs text-gray-300 font-light">Anticuchería Melchorita</span>
+                    </div>
                 </div>
-                <button onclick="toggleCarrito()" class="text-white hover:text-amarillo transition p-2 hover:bg-white/10 rounded-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+                <button onclick="toggleCarrito()" class="text-white hover:text-amarillo transition p-2 hover:bg-white/10 rounded-full group">
+                    <i class="fa-solid fa-xmark text-xl group-hover:rotate-90 transition-transform"></i>
                 </button>
             </div>
 
             <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50" id="carrito-items">
-                <div class="flex flex-col items-center justify-center h-full text-gray-400 opacity-60">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    <p>Tu carrito está vacío.</p>
+                <div class="flex flex-col items-center justify-center h-full text-gray-400 opacity-60 gap-4">
+                    <i class="fa-solid fa-utensils text-6xl"></i>
+                    <p class="font-medium">Tu carrito está vacío.</p>
                 </div>
             </div>
 
-            <div class="border-t border-gray-200 p-6 bg-white shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-10">
-                <div class="flex justify-between items-end mb-4">
-                    <span class="text-gray-600 text-sm font-semibold">Total a pagar:</span>
-                    <span id="carrito-total" class="text-2xl font-extrabold text-guinda">S/ 0.00</span>
+<div class="px-6 py-4 bg-white border-t border-gray-100 space-y-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-10 relative shrink-0">
+            
+            <div>
+                <label class="block text-xs font-bold text-gray-500 uppercase mb-1 ml-1">Tu Nombre</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fa-regular fa-user text-gray-400"></i>
+                    </div>
+                    <input type="text" id="cliente-nombre" placeholder="¿A quién se lo entregamos?" 
+                        class="w-full pl-10 bg-gray-50 border border-gray-200 rounded-xl p-2.5 text-sm focus:outline-none focus:border-guinda focus:ring-1 focus:ring-guinda transition-all placeholder-gray-400">
                 </div>
-                <button onclick="enviarPedidoWhatsApp()" class="w-full bg-green-600 text-white font-bold py-4 px-4 rounded-xl hover:bg-green-700 transition transform active:scale-95 shadow-lg flex justify-center items-center gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                       <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                    </svg>
-                    Pedir por WhatsApp
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-500 uppercase mb-1 ml-1">¿Cómo lo deseas?</label>
+                <div class="flex gap-3">
+                    <label class="flex-1 cursor-pointer group">
+                        <input type="radio" name="tipo_entrega" value="delivery" class="peer hidden" onchange="toggleDireccion(true)">
+                        <div class="flex flex-col items-center justify-center py-2 px-2 border-2 border-gray-100 rounded-xl text-gray-400 peer-checked:border-guinda peer-checked:bg-guinda/5 peer-checked:text-guinda transition-all hover:bg-gray-50">
+                            <i class="fa-solid fa-motorcycle text-lg mb-1 transition-transform group-hover:scale-110"></i>
+                            <span class="text-xs font-bold">Delivery</span>
+                        </div>
+                    </label>
+                    <label class="flex-1 cursor-pointer group">
+                        <input type="radio" name="tipo_entrega" value="recojo" class="peer hidden" checked onchange="toggleDireccion(false)">
+                        <div class="flex flex-col items-center justify-center py-2 px-2 border-2 border-gray-100 rounded-xl text-gray-400 peer-checked:border-guinda peer-checked:bg-guinda/5 peer-checked:text-guinda transition-all hover:bg-gray-50">
+                            <i class="fa-solid fa-shop text-lg mb-1 transition-transform group-hover:scale-110"></i>
+                            <span class="text-xs font-bold">Recojo</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div id="campo-direccion" class="hidden transition-all duration-300">
+                <label class="block text-xs font-bold text-gray-500 uppercase mb-1 ml-1">Dirección de Entrega</label>
+                <div class="relative">
+                    <div class="absolute top-3 left-3 pointer-events-none">
+                        <i class="fa-solid fa-map-location-dot text-gray-400"></i>
+                    </div>
+                    <textarea id="cliente-direccion" rows="2" placeholder="Av. Principal 123, Referencia..." 
+                        class="w-full pl-10 bg-gray-50 border border-gray-200 rounded-xl p-2.5 text-sm focus:outline-none focus:border-guinda focus:ring-1 focus:ring-guinda transition-all resize-none placeholder-gray-400"></textarea>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                 <p class="text-[10px] text-gray-400 italic"><i class="fa-solid fa-circle-info mr-1"></i>Pago vía Yape o Plin al confirmar.</p>
+            </div>
+
+        </div>
+
+            <div class="border-t border-gray-200 p-6 bg-white shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-20 mt-auto">
+                <div class="flex justify-between items-end mb-4">
+                    <span class="text-gray-500 text-sm font-semibold">Total a pagar:</span>
+                    <span id="carrito-total" class="text-3xl font-extrabold text-guinda tracking-tight">S/ 0.00</span>
+                </div>
+                <button onclick="enviarPedidoWhatsApp()" class="group w-full bg-[#25D366] text-white font-bold py-4 px-4 rounded-xl hover:bg-green-600 transition-all transform active:scale-95 shadow-lg shadow-green-200 flex justify-center items-center gap-3">
+                    <i class="fa-brands fa-whatsapp text-2xl transition-transform group-hover:scale-110 group-hover:rotate-12"></i>
+                    <span class="tracking-wide">ENVIAR PEDIDO AHORA</span>
                 </button>
             </div>
+
         </div>
     </div>
 

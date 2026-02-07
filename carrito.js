@@ -1,6 +1,5 @@
 let carrito = [];
 
-// --- ABRIR/CERRAR CARRITO ---
 function toggleCarrito() {
     const modal = document.getElementById('carrito-modal');
     const content = document.getElementById('carrito-content');
@@ -18,7 +17,18 @@ function toggleCarrito() {
     }
 }
 
-// --- ACTUALIZAR CANTIDAD EN TARJETA (MENÚ) ---
+function toggleDireccion(esDelivery) {
+    const divDireccion = document.getElementById('campo-direccion');
+    const inputDireccion = document.getElementById('cliente-direccion');
+    
+    if (esDelivery) {
+        divDireccion.classList.remove('hidden');
+    } else {
+        divDireccion.classList.add('hidden');
+        if(inputDireccion) inputDireccion.value = ''; 
+    }
+}
+
 function actualizarCantidad(btn, cambio) {
     const contenedor = btn.parentElement;
     const numeroElemento = contenedor.querySelector('.cantidad-numero');
@@ -30,12 +40,8 @@ function actualizarCantidad(btn, cambio) {
     numeroElemento.innerText = cantidadActual;
 }
 
-// --- AGREGAR PRODUCTO AL ARRAY ---
 function agregarAlCarrito(btn) {
-    // 1. Encontrar la tarjeta padre
     const tarjeta = btn.closest('.tarjeta-plato');
-    
-    // 2. Extraer info
     const nombre = tarjeta.querySelector('h4, h5').innerText;
     
     // Buscar precio
@@ -49,20 +55,16 @@ function agregarAlCarrito(btn) {
     }
     const precio = parseFloat(precioTexto.replace('S/', '').replace(' ', ''));
     
-    // Imagen
     let imagenSrc = '';
     const divImagen = tarjeta.querySelector('[style*="background-image"]');
     if (divImagen) {
         imagenSrc = divImagen.style.backgroundImage.slice(5, -2);
     } else {
-        // Fallback para emojis
         const emoji = tarjeta.querySelector('.text-2xl');
         if(emoji) imagenSrc = 'emoji:' + emoji.innerText; 
     }
 
     const cantidadSeleccionada = parseInt(tarjeta.querySelector('.cantidad-numero').innerText);
-
-    // 3. Añadir o Actualizar
     const productoExistente = carrito.find(item => item.nombre === nombre);
 
     if (productoExistente) {
@@ -76,13 +78,11 @@ function agregarAlCarrito(btn) {
         });
     }
 
-    // 4. Reset y Vista
     tarjeta.querySelector('.cantidad-numero').innerText = "1";
     actualizarVistaCarrito();
     toggleCarrito(); 
 }
 
-// --- RENDERIZAR CARRITO EN HTML ---
 function actualizarVistaCarrito() {
     const contenedorItems = document.getElementById('carrito-items');
     const totalElemento = document.getElementById('carrito-total');
@@ -145,7 +145,6 @@ function actualizarVistaCarrito() {
     totalElemento.innerText = `S/ ${totalPrecio.toFixed(2)}`;
 }
 
-// --- CAMBIAR CANTIDAD DESDE EL CARRITO ---
 function cambiarCantidadCarrito(index, cambio) {
     const producto = carrito[index];
     producto.cantidad += cambio;
@@ -157,39 +156,65 @@ function cambiarCantidadCarrito(index, cambio) {
     actualizarVistaCarrito();
 }
 
-// --- ELIMINAR ITEM ---
 function eliminarDelCarrito(index) {
     carrito.splice(index, 1);
     actualizarVistaCarrito();
 }
 
-// --- WHATSAPP ---
 function enviarPedidoWhatsApp() {
     if (carrito.length === 0) {
         alert("Tu carrito está vacío.");
         return;
     }
 
-    const numeroWhatsApp = "51956469567"; // Tu número
+    const nombreInput = document.getElementById('cliente-nombre');
+    const direccionInput = document.getElementById('cliente-direccion');
+    const totalElement = document.getElementById('carrito-total');
 
-    // 1. Construimos el mensaje como texto normal (usando \n para saltos de línea)
-    let mensaje = "Hola, Anticuchería Melchorita, quiero realizar este pedido:\n\n";
+    if (!nombreInput) {
+        alert("Error: Faltan campos. Recarga la página.");
+        return;
+    }
 
-    let total = 0;
+    const nombre = nombreInput.value.trim();
+    const opcionEntrega = document.querySelector('input[name="tipo_entrega"]:checked');
+    const metodoEntrega = opcionEntrega ? opcionEntrega.value : 'recojo';
+    const direccion = direccionInput ? direccionInput.value.trim() : "";
+    const totalTexto = totalElement.innerText;
+
+    if (nombre === "") {
+        alert("Por favor, ingresa tu nombre.");
+        nombreInput.focus();
+        return;
+    }
+
+    if (metodoEntrega === "delivery" && direccion === "") {
+        alert("Para delivery, necesitamos tu dirección.");
+        if(direccionInput) direccionInput.focus();
+        return;
+    }
+    
+    let mensaje = "Hola Anticucheria Melchorita, deseo realizar un pedido:\n\n";
+    
+    mensaje += "Cliente: " + nombre + "\n";
+    mensaje += "Tipo: " + metodoEntrega.toUpperCase();
+    
+    if (metodoEntrega === "delivery") {
+        mensaje += "\nDireccion: " + direccion;
+    }
+    
+    mensaje += "\nPago: Yape / Plin\n\n";
+    mensaje += "MI PEDIDO:\n";
+
     carrito.forEach(prod => {
         const subtotal = prod.cantidad * prod.precio;
-        total += subtotal;
-        
-        // Formato: * 2 Surtido #3 S/ 50.00
-        mensaje += `* ${prod.cantidad} ${prod.nombre} --- S/ ${subtotal.toFixed(2)}\n`;
+        mensaje += "- " + prod.cantidad + " x " + prod.nombre + " (S/ " + subtotal.toFixed(2) + ")\n";
     });
 
-    // Agregamos el total y la pregunta final
-    mensaje += `\nSubTotal: S/ ${total.toFixed(2)}\n\n`;
-    mensaje += "¿Cuánto tiempo tardará?";
+    mensaje += "\nTOTAL A PAGAR: " + totalTexto;
 
-    // 2. Codificamos TODO el mensaje para URL (esto arregla los símbolos raros)
+    const numeroWhatsApp = "51956469567";
     const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-
+    
     window.open(url, '_blank');
 }
