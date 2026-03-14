@@ -18,8 +18,10 @@
     <script src="assets/js/toggleMenu.js" defer></script>
     <script src="assets/js/carrito.js" defer></script>
     <script src="assets/js/animacion.js" defer></script>
+    <script src="assets/js/scrollAnticucho.js" defer></script>
 
     <script src="https://cdn.tailwindcss.com"></script>
+
 
     <script>
         tailwind.config = {
@@ -133,6 +135,40 @@
             </div>
         </div>
     </header>
+
+    <section id="anticucho-scene" class="anticucho-scene">
+        <div class="anticucho-sticky">
+            <div class="anticucho-viewport">
+
+                <!-- Fire glow background -->
+                <div class="fire-glow"></div>
+                <div class="ember-glow"></div>
+
+                <!-- Scene text -->
+                <div id="scene-text" class="scene-text">
+                    <h2>El sabor que <span class="accent-text">te espera</span></h2>
+                    <p>Directo de la parrilla a tu plato</p>
+                </div>
+
+                <!-- Skewer (animated) -->
+                <div id="skewer" class="anticucho-skewer">
+                    <img src="assets/img/skewer.png" alt="Palo de anticucho" loading="eager">
+                </div>
+
+                <!-- Dynamic shadow -->
+                <div id="plate-shadow" class="plate-shadow"></div>
+
+                <!-- Vapor particles -->
+                <div id="vapor-particles" class="vapor-container"></div>
+
+                <!-- Plate (static) -->
+                <div id="plate" class="anticucho-plate">
+                    <img src="assets/img/plate.png" alt="Plato de anticuchos" loading="eager">
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <section id="Nosotros" class="py-24 bg-white overflow-hidden relative">
         <div

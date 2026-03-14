@@ -1,5 +1,10 @@
 html {
     scroll-padding-top: 50px;
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
 }
 
 .reveal-up {
@@ -28,3 +33,183 @@ html {
 .delay-100 { transition-delay: 0.1s; }
 .delay-200 { transition-delay: 0.2s; }
 .delay-300 { transition-delay: 0.3s; }
+
+/* ==========================================
+   ANTICUCHO SCROLL ANIMATION
+   ========================================== */
+
+.anticucho-scene {
+    height: 300vh;
+    position: relative;
+    background: linear-gradient(180deg, #0d0d0d 0%, #1a0a0f 30%, #2a0a0f 70%, #1a1a1a 100%);
+    overflow: hidden;
+}
+
+.anticucho-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.anticucho-viewport {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Skewer - starts at top, falls to center */
+.anticucho-skewer {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(200px, 45vw, 350px);
+    z-index: 10;
+    will-change: transform;
+}
+
+.anticucho-skewer img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.7));
+}
+
+/* Plate - bottom center */
+.anticucho-plate {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(260px, 55vw, 440px);
+    z-index: 5;
+    will-change: transform;
+}
+
+.anticucho-plate img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 4px 20px rgba(0,0,0,0.5));
+}
+
+/* Dynamic shadow */
+.plate-shadow {
+    position: absolute;
+    bottom: 18%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.3);
+    width: 180px;
+    height: 80px;
+    background: radial-gradient(ellipse at center, rgba(255, 140, 0, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 4;
+    opacity: 0;
+    will-change: transform, opacity;
+    pointer-events: none;
+}
+
+/* Vapor particles */
+.vapor-container {
+    position: absolute;
+    bottom: 20%;
+    left: 20%;
+    right: 20%;
+    height: 30%;
+    z-index: 15;
+    pointer-events: none;
+    opacity: 0;
+    will-change: opacity;
+}
+
+.vapor-particle {
+    position: absolute;
+    bottom: 0;
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    filter: blur(4px);
+    animation: vaporRise 3s ease-out infinite;
+}
+
+@keyframes vaporRise {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-150px) translateX(15px) scale(3);
+        opacity: 0;
+    }
+}
+
+/* Scene text */
+.scene-text {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 20;
+    opacity: 0;
+    will-change: transform, opacity;
+    padding: 0 1.5rem;
+}
+
+.scene-text h2 {
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.scene-text .accent-text {
+    background: linear-gradient(135deg, #ffcc00, #ff9500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.scene-text p {
+    font-size: clamp(0.9rem, 2vw, 1.25rem);
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+}
+
+/* Background fire/glow effects */
+.fire-glow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 50%;
+    background: radial-gradient(ellipse at bottom center, rgba(255, 80, 0, 0.12) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.ember-glow {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(350px, 90vw);
+    height: min(350px, 90vw);
+    background: radial-gradient(circle, rgba(255, 120, 0, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 2;
+    animation: emberPulse 4s ease-in-out infinite;
+}
+
+@keyframes emberPulse {
+    0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+    50% { opacity: 1; transform: translateX(-50%) scale(1.3); }
+}
