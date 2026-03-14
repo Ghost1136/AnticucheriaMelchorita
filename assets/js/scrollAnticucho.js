@@ -1,12 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
     const scene = document.getElementById('anticucho-scene');
+    const stickyEl = document.querySelector('.anticucho-sticky');
     const skewer = document.getElementById('skewer');
     const plate = document.getElementById('plate');
     const plateShadow = document.getElementById('plate-shadow');
     const sceneText = document.getElementById('scene-text');
     const vaporContainer = document.getElementById('vapor-particles');
 
-    if (!scene || !skewer || !plate) {
+    if (!scene || !stickyEl || !skewer || !plate) {
         console.warn('Anticucho animation: missing elements');
         return;
     }
@@ -34,33 +35,52 @@ document.addEventListener("DOMContentLoaded", () => {
         return Math.max(0, Math.min(1, scrolled / totalScroll));
     }
 
+    function updatePinning() {
+        const rect = scene.getBoundingClientRect();
+        const sceneHeight = scene.offsetHeight;
+        const viewportHeight = window.innerHeight;
+
+        if (rect.top <= 0 && rect.bottom > viewportHeight) {
+            // Scene is in view and there's scroll room: PIN it
+            stickyEl.style.position = 'fixed';
+            stickyEl.style.top = '0';
+            stickyEl.style.left = '0';
+            stickyEl.style.right = '0';
+            stickyEl.style.width = '100%';
+        } else if (rect.bottom <= viewportHeight) {
+            // Past the scene: place at bottom
+            stickyEl.style.position = 'absolute';
+            stickyEl.style.top = (sceneHeight - viewportHeight) + 'px';
+            stickyEl.style.left = '0';
+            stickyEl.style.right = '0';
+            stickyEl.style.width = '100%';
+        } else {
+            // Before the scene: place at top
+            stickyEl.style.position = 'absolute';
+            stickyEl.style.top = '0';
+            stickyEl.style.left = '0';
+            stickyEl.style.right = '0';
+            stickyEl.style.width = '100%';
+        }
+    }
+
     function updateAnimation() {
         const progress = getProgress();
         const viewportHeight = window.innerHeight;
 
-        // ---- SKEWER: Calculate end position dynamically based on plate ----
-        // The plate is at bottom: 8% of the viewport, so its center is roughly at:
-        // viewport bottom - 8% - half plate height ≈ 75-80% of viewport from top
-        // Skewer CSS is at top:50%, so offset needed = plateCenter - 50% of vh
-        
-        // Start: skewer way above (near top of viewport)
-        const startOffset = -viewportHeight * 0.42;
-        // End: skewer centered on the plate (plate is at ~bottom 8%, center ~bottom 25%)
-        // From center (50%): need to go to ~75% = +25% of vh = +0.15vh
-        const endOffset = viewportHeight * 0.12;
-        
-        // Use easeOutCubic for smoother, more natural landing (no hard bounce)
+        // Pin the viewport
+        updatePinning();
+
+        // ---- SKEWER: falls from top toward plate ----
+        const startOffset = -viewportHeight * 0.35;
+        const endOffset = viewportHeight * 0.08;
         const currentOffset = startOffset + (endOffset - startOffset) * easeOutQuart(progress);
-        
-        // Rotation: starts tilted, gently straightens
         const rotation = -25 + 20 * easeOutCubic(progress);
-        
-        // Scale: starts smaller, grows
         const scale = 0.55 + 0.45 * easeOutCubic(progress);
 
         skewer.style.transform = `translate(-50%, -50%) translateY(${currentOffset}px) rotate(${rotation}deg) scale(${scale})`;
 
-        // ---- PLATE SHADOW: warm glow grows ----
+        // ---- PLATE SHADOW ----
         if (plateShadow) {
             const shadowProgress = easeOutCubic(progress);
             const shadowScale = 0.3 + 0.7 * shadowProgress;
@@ -68,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
             plateShadow.style.opacity = 0.1 + 0.6 * shadowProgress;
         }
 
-        // ---- PLATE: gentle settle on landing ----
+        // ---- PLATE: subtle settle ----
         if (progress > 0.9) {
             const landProgress = (progress - 0.9) / 0.1;
             const settle = 1 + 0.02 * Math.sin(landProgress * Math.PI);
@@ -77,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
             plate.style.transform = 'translateX(-50%) scale(1)';
         }
 
-        // ---- TEXT: fades in during last portion ----
+        // ---- TEXT ----
         if (sceneText) {
             if (progress > 0.55) {
                 const textP = easeOutCubic((progress - 0.55) / 0.45);
@@ -89,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // ---- VAPOR: appears during second half ----
+        // ---- VAPOR ----
         if (vaporContainer) {
             if (progress > 0.45) {
                 vaporContainer.style.opacity = Math.min(1, (progress - 0.45) / 0.3);
@@ -109,6 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', () => requestAnimationFrame(updateAnimation));
     requestAnimationFrame(updateAnimation);
 
     // ---- Easing functions ----
@@ -116,7 +137,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return 1 - Math.pow(1 - t, 3);
     }
 
-    // Smoother than bounce, elegant deceleration
     function easeOutQuart(t) {
         return 1 - Math.pow(1 - t, 4);
     }

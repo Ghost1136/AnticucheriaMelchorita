@@ -39,20 +39,22 @@ body {
    ========================================== */
 
 .anticucho-scene {
-    height: 300vh;
+    height: 200vh;
     position: relative;
+    z-index: 1;
     background: linear-gradient(180deg, #0d0d0d 0%, #1a0a0f 30%, #2a0a0f 70%, #1a1a1a 100%);
-    overflow: hidden;
 }
 
 .anticucho-sticky {
-    position: sticky;
+    position: absolute;
     top: 0;
+    left: 0;
+    right: 0;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    z-index: 30;
 }
 
 .anticucho-viewport {
@@ -65,7 +67,7 @@ body {
 .anticucho-skewer {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 55%;
     transform: translate(-50%, -50%);
     width: clamp(200px, 45vw, 350px);
     z-index: 10;
@@ -82,7 +84,7 @@ body {
 /* Plate - bottom center */
 .anticucho-plate {
     position: absolute;
-    bottom: 8%;
+    bottom: 12%;
     left: 50%;
     transform: translateX(-50%);
     width: clamp(260px, 55vw, 440px);
